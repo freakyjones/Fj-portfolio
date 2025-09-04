@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏆 Freaky Jones Portfolio
 
-## Getting Started
+Next.js 14 + TypeScript + Tailwind CSS + ShadCN/UI
+Production-ready frontend portfolio showcasing modern architecture, reusable components, and full-stack features.
 
-First, run the development server:
+## 🛠️ Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **UI**: Tailwind CSS + ShadCN/UI
+- **Components**: Server & Client Components, reusable design
+- **Data**: API Routes for backend functionality
+- **Deployment**: Vercel for global low-latency performance
+
+## ⚡ Key Features
+
+- App Router with nested layouts and dynamic routing
+- Multiple rendering modes: SSG, SSR, ISR, Streaming
+- Reusable UI components: Buttons, Cards, Forms, Modals
+- Optimized for performance: small bundles, responsive design, fast load times
+- Git version control with structured commits
+
+## 📂 Project Structure
+
+```
+app/
+ ├─ layout.tsx          # Root layout (header/footer)
+ ├─ page.tsx            # Home page
+ ├─ about/page.tsx      # About section
+ ├─ projects/page.tsx   # Portfolio projects
+ ├─ contact/page.tsx    # Contact form
+ └─ api/                # Serverless API routes
+components/
+ ├─ ui/                 # ShadCN/UI components
+ └─ custom/             # Project-specific reusable components
+public/                  # Static assets
+styles/                  # Tailwind/global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/yourusername/freaky-jones-portfolio.git
+    cd freaky-jones-portfolio
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Add ShadCN/UI Components:
 
-## Learn More
+```bash
+npx shadcn-ui@latest init
+npx shadcn-ui@latest add button
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Deploy:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+vercel
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔑 Notes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Server-first approach**: use Server Components unless client interactivity is required
+- **Keep `components/ui` organized** for reusable, modular components
+- **Optimize for global performance**: caching, CDN, bundle size

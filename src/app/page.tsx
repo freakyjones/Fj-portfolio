@@ -10,14 +10,12 @@ import {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 gap-8">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-8 p-24">
       <h1 className="text-4xl font-bold">My Portfolio</h1>
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle>Project One</CardTitle>
-          <CardDescription>
-            A brief description of my first project.
-          </CardDescription>
+          <CardDescription>A brief description of my first project.</CardDescription>
         </CardHeader>
         <CardContent>
           <p>

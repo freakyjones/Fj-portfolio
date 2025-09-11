@@ -17,6 +17,12 @@ const badgeVariants = cva(
         outline: "text-foreground",
         skill:
           "border-border bg-muted/50 text-foreground hover:bg-primary hover:text-primary-foreground rounded-2xl px-4 py-2 font-medium transition-all duration-300",
+        expert:
+          "border-primary/20 bg-primary/10 text-primary",
+        advanced:
+          "border-accent/20 bg-accent/10 text-accent",
+        intermediate:
+          "border-border bg-muted text-muted-foreground",
       },
     },
     defaultVariants: {

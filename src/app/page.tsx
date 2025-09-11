@@ -1,6 +1,7 @@
 import AboutSection from "@/components/AboutSection";
 import HeroSection from "@/components/Hero";
 import { Navigation } from "@/components/NavBar";
+import { SkillsSection } from "@/components/SkillsSection";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
+        <SkillsSection />
       </main>
     </>
   );

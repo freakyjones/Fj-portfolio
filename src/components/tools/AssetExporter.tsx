@@ -1,9 +1,10 @@
 "use client";
 
+import NextImage from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Download, Copy, Image, Palette, Code2, FileText } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ComponentProps, useEffect, useState } from "react";
 
 // Helper to get CSS variable values from the DOM
 const getCssVariable = (variable: string) => {
@@ -12,6 +13,19 @@ const getCssVariable = (variable: string) => {
     .getPropertyValue(variable)
     .trim();
 };
+
+// Helper component for export/copy buttons to reduce repetition
+interface ExportButtonProps extends ComponentProps<typeof Button> {
+  label: string;
+  icon: React.ElementType;
+}
+
+const ExportButton = ({ label, icon: Icon, ...props }: ExportButtonProps) => (
+  <Button {...props}>
+    <Icon className={props.size === "lg" ? "mr-2 h-5 w-5" : "mr-2 h-4 w-4"} />
+    {label}
+  </Button>
+);
 
 // Asset Inventory and Export Utilities
 export const AssetExporter = () => {
@@ -204,21 +218,21 @@ export const AssetExporter = () => {
                 ))}
               </div>
               <div className="flex gap-2">
-                <Button
+                <ExportButton
+                  icon={Download}
+                  label="JSON"
                   onClick={() =>
                     downloadAsJson(designTokens, "design-tokens.json")
                   }
                   className="flex-1"
-                >
-                  <Download className="mr-2 h-4 w-4" /> JSON
-                </Button>
-                <Button
+                />
+                <ExportButton
+                  icon={FileText}
+                  label="CSS"
                   onClick={downloadDesignTokens}
                   variant="outline"
                   className="flex-1"
-                >
-                  <FileText className="mr-2 h-4 w-4" /> CSS
-                </Button>
+                />
               </div>
             </CardContent>
           </Card>
@@ -241,10 +255,14 @@ export const AssetExporter = () => {
                   className="border-border rounded-2xl border p-4"
                 >
                   <div className="flex items-start gap-3">
-                    <img
+                    <NextImage
                       src={asset.url}
-                      alt={asset.name}
+                      alt={asset.usage}
                       className="h-16 w-16 rounded-xl object-cover"
+                      width={parseInt(asset.dimensions.split("x")[0], 10) || 64}
+                      height={
+                        parseInt(asset.dimensions.split("x")[1], 10) || 64
+                      }
                     />
                     <div className="min-w-0 flex-1">
                       <h4 className="text-sm font-medium">{asset.name}</h4>
@@ -252,25 +270,25 @@ export const AssetExporter = () => {
                         {asset.usage}
                       </p>
                       <div className="flex gap-2">
-                        <Button
+                        <ExportButton
+                          icon={Copy}
+                          label="Copy URL"
                           size="sm"
                           variant="outline"
                           onClick={() => copyToClipboard(asset.url)}
                           className="text-xs"
-                        >
-                          <Copy className="mr-1 h-3 w-3" /> Copy URL
-                        </Button>
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               ))}
-              <Button
+              <ExportButton
+                icon={Download}
+                label="Export All Image URLs"
                 onClick={() => downloadAsJson(imageAssets, "image-assets.json")}
                 className="w-full"
-              >
-                <Download className="mr-2 h-4 w-4" /> Export All Image URLs
-              </Button>
+              />
             </CardContent>
           </Card>
 
@@ -296,16 +314,16 @@ export const AssetExporter = () => {
                   </div>
                 ))}
               </div>
-              <Button
+              <ExportButton
+                icon={Copy}
+                label="Copy Import Statement"
                 onClick={() =>
                   copyToClipboard(
                     `import { ${iconInventory.join(", ")} } from 'lucide-react';`,
                   )
                 }
                 className="w-full"
-              >
-                <Copy className="mr-2 h-4 w-4" /> Copy Import Statement
-              </Button>
+              />
             </CardContent>
           </Card>
 
@@ -335,14 +353,14 @@ export const AssetExporter = () => {
                       <code>{asset.code}</code>
                     </pre>
                   </div>
-                  <Button
+                  <ExportButton
+                    icon={Copy}
+                    label="Copy SVG Code"
                     size="sm"
                     variant="outline"
                     onClick={() => copyToClipboard(asset.code)}
                     className="mt-2"
-                  >
-                    <Copy className="mr-1 h-3 w-3" /> Copy SVG Code
-                  </Button>
+                  />
                 </div>
               ))}
             </CardContent>
@@ -357,7 +375,9 @@ export const AssetExporter = () => {
               Download everything you need to recreate this design
             </p>
             <div className="grid gap-4 md:grid-cols-3">
-              <Button
+              <ExportButton
+                icon={Download}
+                label="Download Complete Package"
                 onClick={() =>
                   downloadAsJson(
                     { designTokens, imageAssets, iconInventory, svgAssets },
@@ -366,20 +386,20 @@ export const AssetExporter = () => {
                 }
                 size="lg"
                 className="rounded-2xl"
-              >
-                <Download className="mr-2 h-5 w-5" /> Download Complete Package
-              </Button>
-              <Button
+              />
+              <ExportButton
+                icon={Copy}
+                label="Copy Design Tokens"
                 onClick={() =>
                   copyToClipboard(JSON.stringify(designTokens, null, 2))
                 }
                 variant="outline"
                 size="lg"
                 className="rounded-2xl"
-              >
-                <Copy className="mr-2 h-5 w-5" /> Copy Design Tokens
-              </Button>
-              <Button
+              />
+              <ExportButton
+                icon={Image}
+                label="Copy All Image URLs"
                 onClick={() => {
                   const urls = imageAssets.map((asset) => asset.url).join("\n");
                   copyToClipboard(urls);
@@ -387,9 +407,7 @@ export const AssetExporter = () => {
                 variant="outline"
                 size="lg"
                 className="rounded-2xl"
-              >
-                <Image className="mr-2 h-5 w-5" /> Copy All Image URLs
-              </Button>
+              />
             </div>
           </CardContent>
         </Card>

@@ -107,7 +107,7 @@ export const AssetExporter = () => {
     "ArrowDown",
     "Menu",
     "X",
-    "Github",
+    "GithubIcon",
     "ExternalLink",
     "Eye",
     "Star",

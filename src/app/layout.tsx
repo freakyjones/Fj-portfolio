@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ClientOnly from "@/app/Client__Only";
 
 // ------------------------
 // 1️⃣ Google Fonts
@@ -37,8 +36,7 @@ export default function RootLayout({
       <body
         className={`antialiased ${geistSans.variable} ${geistMono.variable}`}
       >
-        {/* Wrap dynamic content to bypass SSR */}
-        <ClientOnly>{children}</ClientOnly>
+        {children}
       </body>
     </html>
   );

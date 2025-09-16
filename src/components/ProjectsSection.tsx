@@ -132,14 +132,10 @@ export function ProjectsSection() {
                 className="rounded-xl"
                 asChild
               >
-                <a
-                  href="https://github.com/freakyjoenes"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="/projects">
                   <ExternalLink />
                   View All Projects
-                </a>
+                </Link>
               </Button>
             </CardContent>
           </Card>

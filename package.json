@@ -9,10 +9,12 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "lighthouse": "npm run build && npx @lhci/cli autorun",
-    "lighthouse:dev": "npx @lhci/cli autorun"
+    "lighthouse:dev": "npx @lhci/cli autorun",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@next/bundle-analyzer": "^15.5.3",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-email/render": "^1.2.3",

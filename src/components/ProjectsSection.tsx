@@ -68,7 +68,11 @@ export function ProjectsSection() {
                   </CardHeader>
 
                   <CardContent className="flex flex-1 flex-col p-6">
-                    <h3 className="text-foreground group-hover:text-primary mb-3 text-2xl font-bold transition-colors">
+                    <h3
+                      className="text-foreground group-hover:text-primary mb-3 text-2xl font-bold transition-colors"
+                      aria-level={3}
+                      role="heading"
+                    >
                       {project.title}
                     </h3>
                     <p className="text-muted-foreground mb-6 flex-1 text-sm leading-relaxed md:text-base">

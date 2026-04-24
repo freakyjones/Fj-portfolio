@@ -8,7 +8,9 @@ function ProjectBox({ description, name, technology, github, website }) {
   };
   return (
     <div className="projectbox">
-      <div className="projectbox__language">{getTechnologies()}</div>
+      <div className="projectbox__language">
+        <h2>{getTechnologies()}</h2>
+      </div>
       <div className="projectbox__repo">
         <a href="" target="_blank" rel="noopener noreferrer">
           {name}

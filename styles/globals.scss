@@ -4,8 +4,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: black;
-  color: #fff;
+  background-color: rgb(238, 224, 224);
+  color: rgb(49, 16, 16);
 }
 
 a {
@@ -29,16 +29,6 @@ img {
   width: 100%;
   margin: 0 auto;
   min-height: 100vh;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
 }
 
 // <------------------Home----------------->
@@ -167,9 +157,22 @@ img {
 
 .projectbox {
   height: 215px;
-  background-color: #202022;
+  background-color: #ffffff;
   width: 100%;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &__language {
+    h2 {
+      font-size: 1rem;
+    }
+  }
+  &__repo {
+    a {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 // Skills --------------
@@ -178,16 +181,18 @@ img {
   &__container {
     margin-top: 32px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }
 
 .skillbox {
   height: 215px;
-  background-color: #202022;
+  background-color: #ffffff;
   width: 100%;
   padding: 40px;
+  width: 270px;
 }
 
 // current-learning --------------
@@ -242,5 +247,23 @@ img {
         }
       }
     }
+  }
+  // Skills --------------
+  .skills {
+    padding: 24px;
+    &__container {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+  .skillbox {
+    height: 215px;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 40px;
+    width: 270px;
   }
 }

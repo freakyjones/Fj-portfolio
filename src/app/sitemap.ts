@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = "https://your-domain.com"; // Replace with your actual domain
+  const siteUrl = "https://fj-portfolio-zeta.vercel.app/"; // Replace with your actual domain
 
   // Add all your public routes here
   const routes = ["", "/about", "/projects", "/contact"];

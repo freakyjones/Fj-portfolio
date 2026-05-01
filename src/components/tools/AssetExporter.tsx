@@ -26,12 +26,49 @@ const ExportButton = ({ label, icon: Icon, ...props }: ExportButtonProps) => (
     {label}
   </Button>
 );
+type DesignTokens = {
+  colors: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    foreground: string;
+    muted: string;
+    border: string;
+    card: string;
+  };
+  spacing: {
+    radius: string;
+    "radius-sm": string;
+    "radius-md": string;
+    "radius-lg": string;
+    "radius-xl": string;
+  };
+  typography: {
+    fontFamily: string;
+  };
+};
 
 // Asset Inventory and Export Utilities
 export const AssetExporter = () => {
-  const [designTokens, setDesignTokens] = useState({
-    colors: {},
-    spacing: {},
+  const [designTokens, setDesignTokens] = useState<DesignTokens>({
+    colors: {
+      primary: "",
+      secondary: "",
+      accent: "",
+      background: "",
+      foreground: "",
+      muted: "",
+      border: "",
+      card: "",
+    },
+    spacing: {
+      radius: "",
+      "radius-sm": "",
+      "radius-md": "",
+      "radius-lg": "",
+      "radius-xl": "",
+    },
     typography: {
       fontFamily: "var(--font-geist-sans)",
     },

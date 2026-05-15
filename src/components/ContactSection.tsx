@@ -30,7 +30,6 @@ interface SocialLink {
   icon: LucideIcon;
   url: string;
   color: string;
-  followers: string;
 }
 
 interface ContactInfo {
@@ -91,23 +90,20 @@ export default function ContactSection() {
     {
       name: "GitHub",
       icon: Github,
-      url: "https://github.com/freakyjoenes",
+      url: "https://github.com/freakyjones",
       color: "hover:text-foreground",
-      followers: "2.1k",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://linkedin.com/in/freakyjoenes",
+      url: "https://www.linkedin.com/in/abhilash-pandey-0b45a1185",
       color: "hover:text-primary",
-      followers: "5.8k",
     },
     {
       name: "Twitter",
       icon: Twitter,
-      url: "https://twitter.com/freakyjoenes",
+      url: "https://x.com/Abhilas50666790",
       color: "hover:text-accent",
-      followers: "1.2k",
     },
   ];
 
@@ -115,7 +111,7 @@ export default function ContactSection() {
     {
       icon: Mail,
       title: "Email",
-      value: "freaky.jones@example.com",
+      value: "abhilashpandey8170@gmail.com",
       description: "Best way to reach me",
       color: "text-primary",
     },
@@ -390,9 +386,9 @@ export default function ContactSection() {
                       </div>
                       <div className="flex-1">
                         <div className="font-medium">{social.name}</div>
-                        <div className="text-muted-foreground text-xs">
+                        {/* <div className="text-muted-foreground text-xs">
                           {social.followers} followers
-                        </div>
+                        </div> */}
                       </div>
                     </motion.a>
                   ))}
@@ -415,7 +411,7 @@ export default function ContactSection() {
                     <span className="text-muted-foreground">
                       Projects Completed
                     </span>
-                    <span className="text-foreground font-semibold">50+</span>
+                    <span className="text-foreground font-semibold">2+</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">

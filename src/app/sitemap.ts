@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = "https://fj-portfolio-zeta.vercel.app/"; // Replace with your actual domain
 
   // Add all your public routes here
-  const routes = ["", "/about", "/projects", "/contact"];
+  const routes = ["", "/about", "/contact"];
 
   return routes.map((route) => ({
     url: `${siteUrl}${route}`,

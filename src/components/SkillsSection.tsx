@@ -54,30 +54,30 @@ export function SkillsSection() {
         { name: "JavaScript (ES6+)", level: 94 },
       ],
     },
-    {
-      title: "AI & Integration",
-      icon: Brain,
-      color: "text-accent",
-      bgColor: "bg-accent/10",
-      skills: [
-        { name: "OpenAI API", level: 88 },
-        { name: "LangChain", level: 85 },
-        { name: "Python", level: 80 },
-        { name: "ML Integration", level: 75 },
-      ],
-    },
-    {
-      title: "Backend & Database",
-      icon: Database,
-      color: "text-secondary",
-      bgColor: "bg-secondary/10",
-      skills: [
-        { name: "Node.js", level: 90 },
-        { name: "PostgreSQL", level: 85 },
-        { name: "Prisma ORM", level: 88 },
-        { name: "REST APIs", level: 93 },
-      ],
-    },
+    // {
+    //   title: "AI & Integration",
+    //   icon: Brain,
+    //   color: "text-accent",
+    //   bgColor: "bg-accent/10",
+    //   skills: [
+    //     { name: "OpenAI API", level: 88 },
+    //     { name: "LangChain", level: 85 },
+    //     { name: "Python", level: 80 },
+    //     { name: "ML Integration", level: 75 },
+    //   ],
+    // },
+    // {
+    //   title: "Backend & Database",
+    //   icon: Database,
+    //   color: "text-secondary",
+    //   bgColor: "bg-secondary/10",
+    //   skills: [
+    //     { name: "Node.js", level: 90 },
+    //     { name: "PostgreSQL", level: 85 },
+    //     { name: "Prisma ORM", level: 88 },
+    //     { name: "REST APIs", level: 93 },
+    //   ],
+    // },
     {
       title: "Design & UX",
       icon: Palette,
@@ -98,13 +98,13 @@ export function SkillsSection() {
     { name: "Next.js", category: "Framework", level: "Expert" },
     { name: "Tailwind CSS", category: "Styling", level: "Expert" },
     { name: "Node.js", category: "Backend", level: "Advanced" },
-    { name: "PostgreSQL", category: "Database", level: "Advanced" },
-    { name: "Prisma", category: "ORM", level: "Advanced" },
+    // { name: "PostgreSQL", category: "Database", level: "Advanced" },
+    // { name: "Prisma", category: "ORM", level: "Advanced" },
     { name: "GitHub", category: "Version Control", level: "Expert" },
     { name: "Figma", category: "Design", level: "Advanced" },
-    { name: "OpenAI", category: "AI", level: "Intermediate" },
+    // { name: "OpenAI", category: "AI", level: "Intermediate" },
     { name: "Vercel", category: "Deployment", level: "Advanced" },
-    { name: "AWS", category: "Cloud", level: "Intermediate" },
+    // { name: "AWS", category: "Cloud", level: "Intermediate" },
   ];
 
   const achievements: Achievement[] = [
@@ -179,7 +179,7 @@ export function SkillsSection() {
                             {skill.level}%
                           </span>
                         </div>
-                        <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
+                        <div className="bg-muted h-2 w-full overflow-hidden rounded-full">
                           <motion.div
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.level}%` }}
@@ -188,7 +188,7 @@ export function SkillsSection() {
                               delay: skillIndex * 0.1,
                             }}
                             viewport={{ once: true }}
-                            className="bg-gradient-to-r from-primary to-accent h-full rounded-full"
+                            className="from-primary to-accent h-full rounded-full bg-gradient-to-r"
                           />
                         </div>
                       </div>
@@ -230,7 +230,7 @@ export function SkillsSection() {
                     viewport={{ once: true }}
                     className="group"
                   >
-                    <Card className="bg-muted/50 border-border rounded-xl transition-all duration-300 hover:bg-muted hover:shadow">
+                    <Card className="bg-muted/50 border-border hover:bg-muted rounded-xl transition-all duration-300 hover:shadow">
                       <CardContent className="p-4 text-center">
                         <div className="text-foreground font-medium">
                           {tool.name}

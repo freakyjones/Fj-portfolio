@@ -21,7 +21,7 @@ const siteConfig = {
   description:
     "A personal portfolio of Abhilash Pandey, a passionate software engineer specializing in building modern web applications with React, Next.js, and TypeScript.",
   url: "https://fj-portfolio-zeta.vercel.app/", // Replace with your actual domain
-  ogImage: "https://your-domain.com/og-image.png", // Replace with your OG image URL
+  ogImage: "/assets/profile_image.png", // Replace with your OG image URL
   keywords: [
     "Portfolio",
     "Software Engineer",

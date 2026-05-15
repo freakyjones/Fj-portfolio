@@ -232,9 +232,9 @@ function HeroSkills() {
 
 function HeroStats() {
   const stats = [
-    { value: "5+", label: "Years Experience" },
-    { value: "50+", label: "Projects Delivered" },
-    { value: "98%", label: "Client Satisfaction" },
+    { value: "1.5", label: "Years Experience" },
+    { value: "2+", label: "Projects Delivered" },
+    { value: "90%", label: "Client Satisfaction" },
   ];
 
   return (

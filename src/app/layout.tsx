@@ -21,7 +21,7 @@ const siteConfig = {
   description:
     "A personal portfolio of Abhilash Pandey, a passionate software engineer specializing in building modern web applications with React, Next.js, and TypeScript.",
   url: "https://fj-portfolio-zeta.vercel.app/", // Replace with your actual domain
-  ogImage: "/assets/profile_image.png", // Replace with your OG image URL
+  ogImage: "/profile_image.png", // Replace with your OG image URL
   keywords: [
     "Portfolio",
     "Software Engineer",
@@ -67,10 +67,10 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@your_twitter_handle", // Replace with your Twitter handle
+    creator: "https://x.com/Abhilas50666790", // Replace with your Twitter handle
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/profile_image.png",
   },
 };
 

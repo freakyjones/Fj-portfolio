@@ -10,7 +10,7 @@ type NavItem = { name: string; href: string };
 const navItems: NavItem[] = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
+  // { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -77,7 +77,7 @@ export function Navigation() {
               <Code2 className="text-primary-foreground h-6 w-6" />
             </div>
             <span className="text-foreground text-xl font-bold tracking-tight">
-              Freaky Jones
+              Abhilash Pandey
             </span>
           </motion.div>
 

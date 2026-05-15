@@ -63,9 +63,9 @@ export default function AboutSection() {
   ];
 
   const stats: Stat[] = [
-    { label: "Projects Completed", value: 25 },
+    { label: "Projects Completed", value: 2 },
     { label: "Years Experience", value: 1.5 },
-    { label: "Global Clients", value: 5 },
+    { label: "Clients", value: 2 },
   ];
 
   return (
@@ -103,8 +103,8 @@ export default function AboutSection() {
                   <div className="relative">
                     <div className="bg-primary/20 absolute inset-0 rounded-3xl blur-sm"></div>
                     <Image
-                      src="https://images.unsplash.com/photo-1731951039706-0e793240bb32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXZlbG9wZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NTY3NDkyOTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                      alt="Freaky Jones - Frontend Engineer"
+                      src="/assets/profile_image_copy.png"
+                      alt="Abhilash Pandey"
                       className="relative h-28 w-28 rounded-3xl object-cover shadow-lg"
                       width={112}
                       height={112}
@@ -112,7 +112,7 @@ export default function AboutSection() {
                   </div>
                   <div className="text-center sm:text-left">
                     <h3 className="text-foreground mb-2 text-2xl font-bold">
-                      Freaky Jones
+                      Abhilash Pandey
                     </h3>
                     <p className="text-primary text-lg font-medium">
                       Frontend Engineer & AI Enthusiast
@@ -244,7 +244,7 @@ export default function AboutSection() {
                 transition={{ duration: 0.3, delay: 0.7 + index * 0.05 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-              > 
+              >
                 <Badge variant="skill">{keyword}</Badge>
               </motion.div>
             ))}

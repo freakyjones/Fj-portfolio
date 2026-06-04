@@ -9,8 +9,6 @@ interface ContactRequestBody {
   message: string;
 }
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.email("Please enter a valid email address."),
@@ -35,6 +33,20 @@ export async function POST(request: Request) {
     }
 
     const { name, email, subject, message } = validation.data;
+
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("RESEND_API_KEY is missing from environment variables.");
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Email service is currently unavailable.",
+        },
+        { status: 500 },
+      );
+    }
+
+    const resend = new Resend(apiKey);
 
     try {
       const { data, error } = await resend.emails.send({

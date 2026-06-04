@@ -35,8 +35,10 @@ export async function POST(request: Request) {
     const { name, email, subject, message } = validation.data;
 
     const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error("RESEND_API_KEY is missing from environment variables.");
+    const emailTo = process.env.EMAIL_TO;
+
+    if (!apiKey || !emailTo) {
+      console.error("Missing required environment variables: RESEND_API_KEY or EMAIL_TO.");
       return NextResponse.json(
         {
           success: false,
@@ -51,7 +53,7 @@ export async function POST(request: Request) {
     try {
       const { data, error } = await resend.emails.send({
         from: "Portfolio Contact Form <onboarding@resend.dev>", // This can be a generic address
-        to: process.env.EMAIL_TO!,
+        to: emailTo,
         subject: `New Message from ${name}: ${subject}`,
         replyTo: email,
         html: `<p>You have a new message from your portfolio contact form:</p>

@@ -9,8 +9,6 @@ interface ContactRequestBody {
   message: string;
 }
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.email("Please enter a valid email address."),
@@ -36,10 +34,26 @@ export async function POST(request: Request) {
 
     const { name, email, subject, message } = validation.data;
 
+    const apiKey = process.env.RESEND_API_KEY;
+    const emailTo = process.env.EMAIL_TO;
+
+    if (!apiKey || !emailTo) {
+      console.error("Missing required environment variables: RESEND_API_KEY or EMAIL_TO.");
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Email service is currently unavailable.",
+        },
+        { status: 500 },
+      );
+    }
+
+    const resend = new Resend(apiKey);
+
     try {
       const { data, error } = await resend.emails.send({
         from: "Portfolio Contact Form <onboarding@resend.dev>", // This can be a generic address
-        to: process.env.EMAIL_TO!,
+        to: emailTo,
         subject: `New Message from ${name}: ${subject}`,
         replyTo: email,
         html: `<p>You have a new message from your portfolio contact form:</p>

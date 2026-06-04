@@ -1,0 +1,14 @@
+# Labeler configuration for actions/labeler
+frontend:
+  - 'src/**/*'
+
+config:
+  - '*.json'
+  - '*.ts'
+  - '*.js'
+  - 'eslint.config.mjs'
+  - 'next.config.ts'
+
+documentation:
+  - 'README.md'
+  - '.agents/**/*'

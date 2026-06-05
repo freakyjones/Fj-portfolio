@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Globe, BookOpen, Brain, Code2, LucideIcon } from "lucide-react";
@@ -72,7 +72,7 @@ export default function AboutSection() {
     <section id="about" className="px-6 py-32 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -86,11 +86,11 @@ export default function AboutSection() {
             A passionate developer dedicated to creating exceptional digital
             experiences through innovative technology and thoughtful design
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="mb-20 grid items-start gap-16 lg:grid-cols-2">
           {/* Left: Profile Card */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -108,6 +108,7 @@ export default function AboutSection() {
                       className="relative h-28 w-28 rounded-3xl object-cover shadow-lg"
                       width={112}
                       height={112}
+                      priority
                     />
                   </div>
                   <div className="text-center sm:text-left">
@@ -155,7 +156,7 @@ export default function AboutSection() {
                 </div>
 
                 {/* Stats Counters */}
-                <motion.div
+                <m.div
                   className="mt-10 grid grid-cols-3 gap-6 text-center"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -179,13 +180,13 @@ export default function AboutSection() {
                       </p>
                     </div>
                   ))}
-                </motion.div>
+                </m.div>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
 
           {/* Right: Highlights */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -193,7 +194,7 @@ export default function AboutSection() {
             className="space-y-6"
           >
             {highlights.map((highlight, index) => (
-              <motion.div
+              <m.div
                 key={highlight.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -219,13 +220,13 @@ export default function AboutSection() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Skills Keywords */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -237,7 +238,7 @@ export default function AboutSection() {
           </h3>
           <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-3">
             {keywords.map((keyword, index) => (
-              <motion.div
+              <m.div
                 key={keyword}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -246,10 +247,10 @@ export default function AboutSection() {
                 whileHover={{ scale: 1.05 }}
               >
                 <Badge variant="skill">{keyword}</Badge>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

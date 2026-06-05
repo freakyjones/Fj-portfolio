@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -129,7 +129,7 @@ export function SkillsSection() {
     <section id="skills" className="px-6 py-32 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -143,12 +143,12 @@ export function SkillsSection() {
             A versatile skill set built through experience, continuous learning,
             and delivering projects across diverse domains.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Skill Categories */}
         <div className="mb-20 grid gap-8 md:grid-cols-2">
           {skillCategories.map((category, categoryIndex) => (
-            <motion.div
+            <m.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -180,7 +180,7 @@ export function SkillsSection() {
                           </span>
                         </div>
                         <div className="bg-muted h-2 w-full overflow-hidden rounded-full">
-                          <motion.div
+                          <m.div
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.level}%` }}
                             transition={{
@@ -196,12 +196,12 @@ export function SkillsSection() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         {/* Tools */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -222,7 +222,7 @@ export function SkillsSection() {
 
               <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
                 {tools.map((tool, index) => (
-                  <motion.div
+                  <m.div
                     key={tool.name}
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -246,15 +246,15 @@ export function SkillsSection() {
                         </Badge>
                       </CardContent>
                     </Card>
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </m.div>
 
         {/* Achievements */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -262,7 +262,7 @@ export function SkillsSection() {
           className="grid gap-6 md:grid-cols-3"
         >
           {achievements.map((achievement, index) => (
-            <motion.div
+            <m.div
               key={achievement.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -282,9 +282,9 @@ export function SkillsSection() {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

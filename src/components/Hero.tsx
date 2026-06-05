@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { ArrowDown, Code2, Zap, Globe, Palette } from "lucide-react";
@@ -106,7 +106,7 @@ function HeroBackground() {
 function HeroContent() {
   return (
     <div className="mb-16 text-center">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -132,10 +132,10 @@ function HeroContent() {
           I specialize in React, TypeScript, and modern UI frameworks to deliver
           fast, user-centric web applications that drive business growth.
         </p>
-      </motion.div>
+      </m.div>
 
       {/* CTA Buttons */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -150,7 +150,7 @@ function HeroContent() {
           label="Get in Touch"
           onClick={() => scrollToSection("#contact")}
         />
-      </motion.div>
+      </m.div>
     </div>
   );
 }
@@ -165,7 +165,7 @@ function CTAButton({
   primary?: boolean;
 }) {
   return (
-    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+    <m.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
       <Button
         size="lg"
         onClick={onClick}
@@ -177,13 +177,13 @@ function CTAButton({
       >
         {label}
       </Button>
-    </motion.div>
+    </m.div>
   );
 }
 
 function HeroSkills() {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.4 }}
@@ -200,7 +200,7 @@ function HeroSkills() {
 
       <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 lg:grid-cols-4">
         {keySkills.map((skill, index) => (
-          <motion.div
+          <m.div
             key={skill.label}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -223,10 +223,10 @@ function HeroSkills() {
                 </p>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
         ))}
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -238,7 +238,7 @@ function HeroStats() {
   ];
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.6 }}
@@ -246,37 +246,37 @@ function HeroStats() {
     >
       {stats.map((stat) => (
         <div key={stat.label} className="group text-center">
-          <motion.div
+          <m.div
             className="text-primary mb-2 text-3xl font-bold transition-transform duration-300 group-hover:scale-110 lg:text-4xl"
             whileHover={{ scale: 1.1 }}
           >
             {stat.value}
-          </motion.div>
+          </m.div>
           <div className="text-muted-foreground text-sm font-medium">
             {stat.label}
           </div>
         </div>
       ))}
-    </motion.div>
+    </m.div>
   );
 }
 
 function ScrollIndicator() {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 1 }}
       className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
     >
-      <motion.div
+      <m.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         className="text-muted-foreground/60 hover:text-muted-foreground cursor-pointer transition-colors"
         onClick={() => scrollToSection("#about")}
       >
         <ArrowDown className="h-6 w-6" />
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   );
 }

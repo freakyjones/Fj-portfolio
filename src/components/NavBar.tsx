@@ -96,7 +96,7 @@ export function Navigation() {
             ))}
             <Button
               size="sm"
-              className="bg-primary hover:bg-secondary text-primary-foreground rounded-2xl px-6 py-2 font-medium shadow-lg transition-all duration-300 hover:shadow-xl"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-6 py-2 font-medium shadow-lg transition-all duration-300 hover:shadow-xl"
               onClick={() => scrollToSection("#contact")}
             >
               Hire Me
@@ -105,6 +105,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
+            aria-label="Toggle navigation menu"
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             onClick={() => setIsOpen(!isOpen)}

@@ -148,16 +148,13 @@
   /* Borders and outlines only on interactive/focusable elements */
   input,
   textarea,
-  select,
-  button,
-  a {
+  select {
     @apply border border-border rounded-md;
   }
 
   input:focus,
   textarea:focus,
-  select:focus,
-  button:focus {
+  select:focus {
     @apply outline-none ring-2 ring-primary/50;
   }
 

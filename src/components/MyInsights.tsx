@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -11,7 +11,7 @@ export function MyInsights() {
   return (
     <section id="insights" className="bg-muted/20 px-6 py-32 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -25,12 +25,12 @@ export function MyInsights() {
             A well-rounded perspective shaped by curiosity about global affairs,
             strategic thinking, and continuous learning across diverse domains
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Core Interests */}
         <div className="mb-20 grid gap-8 lg:grid-cols-3">
           {interests.map((interest, index) => (
-            <motion.div
+            <m.div
               key={interest.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -52,13 +52,13 @@ export function MyInsights() {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         <div className="mb-20 grid gap-12 lg:grid-cols-2">
           {/* Current Reading */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -79,7 +79,7 @@ export function MyInsights() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {currentReads.map((book, index) => (
-                  <motion.div
+                  <m.div
                     key={`${book.title}-${book.author}`}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -102,7 +102,7 @@ export function MyInsights() {
                     >
                       {book.category}
                     </Badge>
-                  </motion.div>
+                  </m.div>
                 ))}
 
                 <div className="pt-4">
@@ -117,10 +117,10 @@ export function MyInsights() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
 
           {/* Recent Insights */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -141,7 +141,7 @@ export function MyInsights() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {insights.map((insight, index) => (
-                  <motion.div
+                  <m.div
                     key={insight.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -166,7 +166,7 @@ export function MyInsights() {
                     <div className="text-muted-foreground/70 text-xs">
                       {insight.readTime}
                     </div>
-                  </motion.div>
+                  </m.div>
                 ))}
 
                 <div className="pt-4">
@@ -181,11 +181,11 @@ export function MyInsights() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Philosophy Quote */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -204,7 +204,7 @@ export function MyInsights() {
               </cite>
             </CardContent>
           </Card>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

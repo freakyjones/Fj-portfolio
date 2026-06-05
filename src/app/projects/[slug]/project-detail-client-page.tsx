@@ -3,7 +3,7 @@
 import { Project } from "@/data/projects";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -30,7 +30,7 @@ export default function ProjectDetailClientPage({
       <section className="bg-muted/10 relative px-6 pt-24 pb-20 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Back Button */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -46,10 +46,10 @@ export default function ProjectDetailClientPage({
                 Back to Projects
               </Link>
             </Button>
-          </motion.div>
+          </m.div>
 
           {/* Project Title */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -70,10 +70,10 @@ export default function ProjectDetailClientPage({
             <p className="text-muted-foreground font-normal md:text-2xl">
               {project.subtitle}
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Hero Image */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -87,7 +87,7 @@ export default function ProjectDetailClientPage({
               className="h-[400px] w-full object-cover md:h-[500px]"
             />
             <div className="from-foreground/20 absolute inset-0 bg-gradient-to-t to-transparent" />
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -98,7 +98,7 @@ export default function ProjectDetailClientPage({
             {/* Left Column - Overview & Screenshots */}
             <div className="space-y-12 lg:col-span-2">
               {/* Overview Section */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -117,7 +117,7 @@ export default function ProjectDetailClientPage({
                   </h3>
                   <div className="grid gap-3 md:grid-cols-2">
                     {project.highlights.map((highlight, index) => (
-                      <motion.div
+                      <m.div
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -129,15 +129,15 @@ export default function ProjectDetailClientPage({
                         <span className="text-muted-foreground">
                           {highlight}
                         </span>
-                      </motion.div>
+                      </m.div>
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Screenshots Gallery */}
               {project.screenshots.length > 0 && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
@@ -148,7 +148,7 @@ export default function ProjectDetailClientPage({
                   </h3>
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {project.screenshots.map((screenshot, index) => (
-                      <motion.div
+                      <m.div
                         key={index}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -179,17 +179,17 @@ export default function ProjectDetailClientPage({
                             </p>
                           </CardContent>
                         </Card>
-                      </motion.div>
+                      </m.div>
                     ))}
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </div>
 
             {/* Right Column - Sidebar */}
             <div className="space-y-8">
               {/* Tech Stack */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -213,10 +213,10 @@ export default function ProjectDetailClientPage({
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </m.div>
 
               {/* Links */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -260,10 +260,10 @@ export default function ProjectDetailClientPage({
                     </Button>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </m.div>
 
               {/* Impact Metrics */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -297,7 +297,7 @@ export default function ProjectDetailClientPage({
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </div>

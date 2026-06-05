@@ -3,7 +3,7 @@
 import { projects } from "@/data/projects";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -18,7 +18,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="bg-muted/40 px-6 py-32 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -32,11 +32,11 @@ export function ProjectsSection() {
             Selected projects showcasing modern web technologies, AI
             integration, and measurable business impact.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="mb-16 grid gap-8 lg:grid-cols-2">
           {projects.map((project, idx) => (
-            <motion.div
+            <m.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -110,11 +110,11 @@ export function ProjectsSection() {
                   </Button>
                 </CardFooter>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -143,7 +143,7 @@ export function ProjectsSection() {
               </Button>
             </CardContent>
           </Card>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

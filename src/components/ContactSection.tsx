@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -141,7 +141,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="px-6 py-32 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -156,10 +156,10 @@ export default function ContactSection() {
             discuss new opportunities, innovative challenges, and potential
             collaborations.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Contact Info Cards */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -167,7 +167,7 @@ export default function ContactSection() {
           className="mb-16 grid grid-cols-2 gap-6 lg:grid-cols-4"
         >
           {contactInfo.map((info, index) => (
-            <motion.div
+            <m.div
               key={info.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -190,13 +190,13 @@ export default function ContactSection() {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
         <div className="grid gap-12 lg:grid-cols-3">
           {/* Contact Form */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -301,7 +301,7 @@ export default function ContactSection() {
                     )}
                   </div>
 
-                  <motion.div
+                  <m.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -318,14 +318,14 @@ export default function ContactSection() {
                       )}
                       {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
-                  </motion.div>
+                  </m.div>
                 </form>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
 
           {/* Sidebar */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -368,7 +368,7 @@ export default function ContactSection() {
                 </h3>
                 <div className="space-y-4">
                   {socialLinks.map((social, index) => (
-                    <motion.a
+                    <m.a
                       key={social.name}
                       href={social.url}
                       target="_blank"
@@ -390,7 +390,7 @@ export default function ContactSection() {
                           {social.followers} followers
                         </div> */}
                       </div>
-                    </motion.a>
+                    </m.a>
                   ))}
                 </div>
               </CardContent>
@@ -430,7 +430,7 @@ export default function ContactSection() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

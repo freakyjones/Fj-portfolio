@@ -2,22 +2,23 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { FramerProvider } from "@/components/ui/FramerProvider";
 
 // ------------------------
 // 1️⃣ Google Fonts
 // ------------------------
-export const geistSans = Geist({
+const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-geist-sans",
 });
 
-export const geistMono = Geist_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
 });
 
 const siteConfig = {
-  name: "Abhilsh Pandey | Software Engineer",
+  name: "Abhilash Pandey | Software Engineer",
   description:
     "A personal portfolio of Abhilash Pandey, a passionate software engineer specializing in building modern web applications with React, Next.js, and TypeScript.",
   url: "https://fj-portfolio-zeta.vercel.app/", // Replace with your actual domain
@@ -95,7 +96,9 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`antialiased ${geistSans.variable} ${geistMono.variable}`}
       >
-        {children}
+        <FramerProvider>
+          {children}
+        </FramerProvider>
         <Toaster />
       </body>
     </html>

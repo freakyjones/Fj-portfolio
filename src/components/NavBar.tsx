@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Button } from "./ui/button";
 import { Menu, X, Code2 } from "lucide-react";
 
@@ -55,7 +55,7 @@ export function Navigation() {
     "text-muted-foreground hover:text-foreground hover:bg-muted/50 block w-full rounded-2xl px-4 py-3 text-left font-medium transition-all duration-200";
 
   return (
-    <motion.nav
+    <m.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -68,7 +68,7 @@ export function Navigation() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <motion.div
+          <m.div
             whileHover={{ scale: 1.02 }}
             className="flex cursor-pointer items-center gap-3"
             onClick={() => scrollToSection("#home")}
@@ -79,12 +79,12 @@ export function Navigation() {
             <span className="text-foreground text-xl font-bold tracking-tight">
               Abhilash Pandey
             </span>
-          </motion.div>
+          </m.div>
 
           {/* Desktop Navigation */}
           <div className="hidden items-center space-x-8 md:flex">
             {navItems.map((item) => (
-              <motion.button
+              <m.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
                 className={navBtnClasses}
@@ -92,7 +92,7 @@ export function Navigation() {
                 whileTap={{ scale: 0.95 }}
               >
                 {item.name}
-              </motion.button>
+              </m.button>
             ))}
             <Button
               size="sm"
@@ -115,7 +115,7 @@ export function Navigation() {
         </div>
 
         {/* Mobile Navigation */}
-        <motion.div
+        <m.div
           id="mobile-menu"
           initial="closed"
           animate={isOpen ? "open" : "closed"}
@@ -132,7 +132,7 @@ export function Navigation() {
         >
           <div className="space-y-1 py-6">
             {navItems.map((item, index) => (
-              <motion.button
+              <m.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
                 className={mobileBtnClasses}
@@ -141,9 +141,9 @@ export function Navigation() {
                 transition={{ duration: 0.3, delay: index * 0.08 }}
               >
                 {item.name}
-              </motion.button>
+              </m.button>
             ))}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -20 }}
               transition={{ duration: 0.3, delay: navItems.length * 0.08 }}
@@ -156,10 +156,10 @@ export function Navigation() {
               >
                 Hire Me
               </Button>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
-    </motion.nav>
+    </m.nav>
   );
 }

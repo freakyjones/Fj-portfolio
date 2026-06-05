@@ -1,7 +1,7 @@
 "use client";
 
 import { projects } from "@/data/projects";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -35,7 +35,7 @@ export default function AllProjectsPage() {
       <section className="bg-muted/10 px-6 pt-24 pb-16 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Breadcrumb Navigation */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -54,10 +54,10 @@ export default function AllProjectsPage() {
             </Button>
             <ChevronRight className="h-4 w-4" />
             <span className="text-foreground font-medium">Projects</span>
-          </motion.div>
+          </m.div>
 
           {/* Page Title and Intro */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -71,10 +71,10 @@ export default function AllProjectsPage() {
               mobile apps, blockchain solutions, and creative experiments. Each
               project represents a unique challenge and innovative solution.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Stats */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -104,14 +104,14 @@ export default function AllProjectsPage() {
                 Technologies
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* Featured Projects Section */}
       <section className="px-6 py-20 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -124,11 +124,11 @@ export default function AllProjectsPage() {
             <p className="text-muted-foreground text-lg">
               Highlighting my most impactful and innovative work
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="mb-20 grid gap-8 lg:grid-cols-2">
             {featuredProjects.map((project, index) => (
-              <motion.div
+              <m.div
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -149,10 +149,10 @@ export default function AllProjectsPage() {
                         />
                         <div className="from-foreground/20 absolute inset-0 bg-gradient-to-t to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                        {/* Badges */}
+                        {/* Top badges */}
                         <div className="absolute top-4 left-4 flex gap-2">
-                          <Badge className="bg-primary/90 text-primary-foreground border-0 backdrop-blur-sm">
-                            <Star className="mr-1 h-3 w-3" />
+                          <Badge className="bg-primary/90 text-primary-foreground border-0 flex items-center gap-1 backdrop-blur-sm">
+                            <Star className="h-3 w-3" />
                             Featured
                           </Badge>
                           <Badge
@@ -165,44 +165,45 @@ export default function AllProjectsPage() {
                       </div>
                     </Link>
                   </CardHeader>
-                  <CardContent className="flex-1 p-6">
-                    <div className="mb-3 flex items-center gap-2">
+
+                  <CardContent className="flex flex-1 flex-col p-8">
+                    <div className="mb-4 flex items-center justify-between">
                       <Badge
                         variant="outline"
-                        className="border-border bg-muted/50 text-muted-foreground px-2 py-1 text-xs"
+                        className="border-border bg-muted/50 text-muted-foreground px-3 py-1 text-xs"
                       >
                         {project.category}
                       </Badge>
+                      <span className="text-primary text-xs font-semibold">
+                        {project.impact}
+                      </span>
                     </div>
-                    <h3 className="text-foreground group-hover:text-primary mb-3 text-2xl font-bold transition-colors">
+
+                    <h3 className="text-foreground group-hover:text-primary mb-4 text-2xl font-bold transition-colors">
                       <Link href={`/projects/${project.slug}`}>
                         {project.title}
                       </Link>
                     </h3>
-                    <p className="text-muted-foreground mb-6 flex-1 text-base leading-relaxed">
+
+                    <p className="text-muted-foreground mb-6 flex-1 text-sm leading-relaxed md:text-base">
                       {project.description}
                     </p>
+
+                    {/* Tech stack */}
                     <div className="flex flex-wrap gap-2">
-                      {project.techStack.slice(0, 4).map((tech) => (
+                      {project.techStack.map((tech) => (
                         <Badge
                           key={tech}
                           variant="outline"
-                          className="border-border bg-muted/50 text-muted-foreground hover:bg-primary hover:text-primary-foreground px-3 py-1 text-xs font-normal transition-all duration-300"
+                          className="border-border bg-muted/50 text-muted-foreground rounded-xl px-3 py-1 text-xs"
                         >
                           {tech}
                         </Badge>
                       ))}
-                      {project.techStack.length > 4 && (
-                        <Badge
-                          variant="outline"
-                          className="border-border bg-muted/50 text-muted-foreground px-3 py-1 text-xs"
-                        >
-                          +{project.techStack.length - 4} more
-                        </Badge>
-                      )}
                     </div>
                   </CardContent>
-                  <CardFooter className="flex gap-2 p-6 pt-0">
+
+                  <CardFooter className="gap-3 p-8 pt-0">
                     <Button
                       variant="outline"
                       size="sm"
@@ -214,23 +215,24 @@ export default function AllProjectsPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Github className="mr-1 h-3 w-3" />
+                        <Github className="mr-1.5 h-4 w-4" />
                         GitHub
                       </a>
                     </Button>
+
                     <Button
                       size="sm"
                       className="bg-primary text-primary-foreground hover:bg-secondary flex-1 rounded-2xl text-xs transition-all duration-300"
                       asChild
                     >
                       <Link href={`/projects/${project.slug}`}>
-                        <Eye className="mr-1 h-3 w-3" />
+                        <Eye className="mr-1.5 h-4 w-4" />
                         Details
                       </Link>
                     </Button>
                   </CardFooter>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -239,7 +241,7 @@ export default function AllProjectsPage() {
       {/* All Projects Grid */}
       <section className="bg-muted/20 px-6 py-20 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -252,11 +254,11 @@ export default function AllProjectsPage() {
             <p className="text-muted-foreground text-lg">
               Complete collection of my development work and experiments
             </p>
-          </motion.div>
+          </m.div>
           {/* Responsive Grid: 3 cols desktop, 2 cols tablet, 1 col mobile */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {otherProjects.map((project, index) => (
-              <motion.div
+              <m.div
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -368,7 +370,7 @@ export default function AllProjectsPage() {
                     </Button>
                   </CardFooter>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

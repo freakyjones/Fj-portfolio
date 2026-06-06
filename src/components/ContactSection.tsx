@@ -4,7 +4,7 @@ import { m } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import { contactFormSchema, type ContactFormValues } from "@/lib/schemas/contact";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -39,19 +39,6 @@ interface ContactInfo {
   description: string;
   color: string;
 }
-
-const contactFormSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  subject: z
-    .string()
-    .min(5, { message: "Subject must be at least 5 characters." }),
-  message: z
-    .string()
-    .min(10, { message: "Message must be at least 10 characters." }),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function ContactSection() {
   const {

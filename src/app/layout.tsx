@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { FramerProvider } from "@/components/ui/FramerProvider";
@@ -15,6 +15,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-space-grotesk",
 });
 
 const siteConfig = {
@@ -94,7 +100,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning={true}
-        className={`antialiased ${geistSans.variable} ${geistMono.variable}`}
+        className={`antialiased ${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
       >
         <FramerProvider>
           {children}

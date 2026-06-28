@@ -6,46 +6,55 @@
 
 /* ---------- Theme Tokens ---------- */
 @theme inline {
-  /* Colors */
-  --color-background: #ffffff;
-  --color-foreground: #1e293b;
-  --color-card: #ffffff;
-  --color-card-foreground: #1e293b;
-  --color-popover: #ffffff;
-  --color-popover-foreground: #1e293b;
-  --color-primary: #2563eb;
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #1e40af;
-  --color-secondary-foreground: #ffffff;
-  --color-muted: #f8fafc;
-  --color-muted-foreground: #64748b;
-  --color-accent: #f97316;
-  --color-accent-foreground: #ffffff;
-  --color-destructive: #dc2626;
-  --color-destructive-foreground: #ffffff;
-  --color-border: #e2e8f0;
-  --color-input: #f1f5f9;
-  --color-switch: #cbd5e1;
+  /* ---------- Cultivated Code palette (dark-first, OKLCH) ---------- */
+  /* Obsidian Night / Parchment White / Laterite Shingle */
+  --color-background: oklch(14% 0.01 260);
+  --color-foreground: oklch(93% 0.01 60);
+  --color-card: oklch(22% 0.02 50);
+  --color-card-foreground: oklch(93% 0.01 60);
+  --color-popover: oklch(18% 0.015 55);
+  --color-popover-foreground: oklch(93% 0.01 60);
+
+  /* Electric Clay (terracotta) — brand accent */
+  --color-primary: oklch(65% 0.22 45);
+  --color-primary-foreground: oklch(14% 0.01 260);
+  --color-secondary: oklch(55% 0.2 40);
+  --color-secondary-foreground: oklch(93% 0.01 60);
+
+  /* Ghost Mint — AI / technical highlights */
+  --color-accent: oklch(88% 0.15 150);
+  --color-accent-foreground: oklch(14% 0.01 260);
+
+  --color-muted: oklch(20% 0.015 55);
+  --color-muted-foreground: oklch(70% 0.02 60);
+
+  --color-destructive: oklch(60% 0.2 25);
+  --color-destructive-foreground: oklch(98% 0.01 60);
+  --color-border: oklch(28% 0.02 50);
+  --color-input: oklch(22% 0.02 50);
+  --color-ring: oklch(65% 0.22 45);
+  --color-switch: oklch(40% 0.02 50);
 
   /* Chart palette */
-  --color-chart-1: #2563eb;
-  --color-chart-2: #1e40af;
-  --color-chart-3: #f97316;
-  --color-chart-4: #64748b;
-  --color-chart-5: #0f172a;
+  --color-chart-1: oklch(65% 0.22 45);
+  --color-chart-2: oklch(88% 0.15 150);
+  --color-chart-3: oklch(55% 0.2 40);
+  --color-chart-4: oklch(70% 0.02 60);
+  --color-chart-5: oklch(93% 0.01 60);
 
   /* Sidebar */
-  --color-sidebar: #f8fafc;
-  --color-sidebar-foreground: #1e293b;
-  --color-sidebar-primary: #2563eb;
-  --color-sidebar-primary-foreground: #ffffff;
-  --color-sidebar-accent: #f1f5f9;
-  --color-sidebar-accent-foreground: #1e293b;
-  --color-sidebar-border: #e2e8f0;
-  --color-sidebar-ring: #2563eb;
+  --color-sidebar: oklch(18% 0.015 55);
+  --color-sidebar-foreground: oklch(93% 0.01 60);
+  --color-sidebar-primary: oklch(65% 0.22 45);
+  --color-sidebar-primary-foreground: oklch(14% 0.01 260);
+  --color-sidebar-accent: oklch(22% 0.02 50);
+  --color-sidebar-accent-foreground: oklch(93% 0.01 60);
+  --color-sidebar-border: oklch(28% 0.02 50);
+  --color-sidebar-ring: oklch(65% 0.22 45);
 
   /* Typography */
   --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', 'Inter', sans-serif;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
@@ -161,5 +170,65 @@
   /* Optional: Card border example */
   .card {
     @apply border border-border rounded-lg bg-card text-card-foreground;
+  }
+}
+
+/* ---------- Cultivated Code: display type + atmosphere ---------- */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Drifting aurora gradient-mesh blobs for the hero */
+@keyframes aurora-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 8%, 0) scale(1.15);
+  }
+}
+
+@keyframes aurora-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate3d(-8%, -6%, 0) scale(0.9);
+  }
+}
+
+@keyframes aurora-drift-c {
+  0%,
+  100% {
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-50%, 10%, 0) scale(1.2);
+  }
+}
+
+.aurora-a {
+  animation: aurora-drift-a 18s ease-in-out infinite;
+}
+.aurora-b {
+  animation: aurora-drift-b 22s ease-in-out infinite;
+}
+.aurora-c {
+  animation: aurora-drift-c 26s ease-in-out infinite;
+}
+
+/* Subtle film grain to add depth over the dark background */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-a,
+  .aurora-b,
+  .aurora-c {
+    animation: none;
   }
 }

@@ -32,15 +32,15 @@ const keySkills: Skill[] = [
     icon: Palette,
     label: "UI/UX Design",
     description: "User-centered interfaces",
-    color: "text-secondary",
-    bgColor: "bg-secondary/10",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
   },
   {
     icon: Globe,
     label: "Global Remote",
     description: "Cross-timezone collaboration",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    color: "text-accent",
+    bgColor: "bg-accent/10",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center px-6 pt-20 lg:px-8"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20 lg:px-8"
     >
       {/* 🌌 Background Layer */}
       <HeroBackground />
@@ -76,11 +76,16 @@ export default function HeroSection() {
 function HeroBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="bg-primary/3 absolute top-1/4 right-1/4 h-72 w-72 rounded-full blur-3xl" />
-      <div className="bg-accent/3 absolute bottom-1/4 left-1/4 h-72 w-72 rounded-full blur-3xl" />
+      {/* Aurora gradient-mesh: drifting Electric Clay + Ghost Mint blobs */}
+      <div className="aurora-a bg-primary/25 absolute -top-32 right-[10%] h-[34rem] w-[34rem] rounded-full blur-[120px]" />
+      <div className="aurora-b bg-accent/15 absolute top-1/3 -left-24 h-[28rem] w-[28rem] rounded-full blur-[120px]" />
+      <div className="aurora-c bg-secondary/20 absolute bottom-[-8rem] left-1/2 h-[30rem] w-[30rem] rounded-full blur-[130px]" />
+
+      {/* Fine grid for engineered precision */}
       <svg
-        className="absolute inset-0 h-full w-full opacity-[0.02]"
+        className="text-foreground absolute inset-0 h-full w-full opacity-[0.04]"
         viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid slice"
       >
         <defs>
           <pattern
@@ -93,12 +98,18 @@ function HeroBackground() {
               d="M 4 0 L 0 0 0 4"
               fill="none"
               stroke="currentColor"
-              strokeWidth="0.5"
+              strokeWidth="0.25"
             />
           </pattern>
         </defs>
         <rect width="100" height="100" fill="url(#hero-grid)" />
       </svg>
+
+      {/* Film grain for depth */}
+      <div className="grain-overlay absolute inset-0 opacity-[0.06] mix-blend-overlay" />
+
+      {/* Vignette so content stays legible over the aurora */}
+      <div className="from-background/0 via-background/0 to-background absolute inset-0 bg-gradient-to-b" />
     </div>
   );
 }
@@ -113,24 +124,31 @@ function HeroContent() {
         className="mb-8"
       >
         {/* Status Badge */}
-        <div className="bg-card border-border mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 shadow-sm transition-shadow duration-300 hover:shadow-md">
-          <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+        <div className="border-border bg-card/60 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 shadow-sm backdrop-blur-md transition-shadow duration-300 hover:shadow-md">
+          <span className="relative flex h-2 w-2">
+            <span className="bg-accent absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
+            <span className="bg-accent relative inline-flex h-2 w-2 rounded-full" />
+          </span>
           <span className="text-muted-foreground text-sm font-medium">
             Available for new opportunities
           </span>
         </div>
 
         {/* Headline */}
-        <h1 className="text-foreground mb-6 text-4xl leading-tight font-bold tracking-tight md:text-5xl lg:text-6xl">
+        <h1 className="font-display text-foreground mb-6 text-5xl leading-[1.05] font-bold tracking-tight md:text-6xl lg:text-7xl">
           Crafting Scalable
           <br />
-          <span className="text-primary">Frontend Experiences</span>
+          <span className="from-primary via-primary to-accent bg-gradient-to-r bg-clip-text text-transparent">
+            Frontend Experiences
+          </span>
         </h1>
 
         {/* Supporting Text */}
         <p className="text-muted-foreground mx-auto mb-8 max-w-3xl text-lg leading-relaxed font-normal md:text-xl">
-          I specialize in React, TypeScript, and modern UI frameworks to deliver
-          fast, user-centric web applications that drive business growth.
+          I specialize in <span className="text-foreground font-medium">React</span>,{" "}
+          <span className="text-foreground font-medium">TypeScript</span>, and modern
+          UI frameworks to deliver fast, user-centric web applications that drive{" "}
+          <span className="text-primary font-medium">business growth</span>.
         </p>
       </m.div>
 
@@ -142,14 +160,11 @@ function HeroContent() {
         className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
       >
         <CTAButton
-          label="View My Work"
-          onClick={() => scrollToSection("#projects")}
+          label="Let's Work Together"
+          onClick={() => scrollToSection("#contact")}
           primary
         />
-        <CTAButton
-          label="Get in Touch"
-          onClick={() => scrollToSection("#contact")}
-        />
+        <CTAButton label="About Me" onClick={() => scrollToSection("#about")} />
       </m.div>
     </div>
   );
@@ -171,8 +186,8 @@ function CTAButton({
         onClick={onClick}
         className={
           primary
-            ? "bg-primary hover:bg-primary/90 text-primary-foreground min-w-[160px] rounded-2xl px-8 py-4 text-base font-medium shadow-lg transition-all duration-300 hover:shadow-xl"
-            : "border-border text-foreground hover:bg-muted hover:border-primary/30 min-w-[160px] rounded-2xl border-2 px-8 py-4 text-base font-medium transition-all duration-300"
+            ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-primary/30 hover:shadow-primary/40 min-w-[180px] rounded-2xl px-8 py-6 text-base font-semibold shadow-lg transition-all duration-300"
+            : "border-border text-foreground hover:border-primary/40 hover:bg-card min-w-[180px] rounded-2xl border-2 bg-transparent px-8 py-6 text-base font-medium transition-all duration-300"
         }
       >
         {label}
@@ -190,7 +205,7 @@ function HeroSkills() {
       className="mb-20"
     >
       <div className="mb-10 text-center">
-        <h3 className="text-foreground mb-3 text-xl font-semibold">
+        <h3 className="font-display text-foreground mb-3 text-xl font-semibold">
           Core Expertise
         </h3>
         <p className="text-muted-foreground text-sm">
@@ -205,10 +220,10 @@ function HeroSkills() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            whileHover={{ y: -6, transition: { duration: 0.2 } }}
             className="group"
           >
-            <Card className="bg-card/80 border-border/60 hover:border-border h-full rounded-2xl border shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
+            <Card className="bg-card/70 border-border hover:border-primary/50 hover:shadow-primary/10 h-full rounded-2xl border shadow-sm backdrop-blur-md transition-all duration-300 hover:shadow-lg">
               <CardContent className="p-6 text-center">
                 <div
                   className={`inline-flex rounded-xl p-3 ${skill.bgColor} ${skill.color} mb-4 transition-transform duration-300 group-hover:scale-110`}
@@ -234,7 +249,7 @@ function HeroStats() {
   const stats = [
     { value: "1.5", label: "Years Experience" },
     { value: "2+", label: "Projects Delivered" },
-    { value: "90%", label: "Client Satisfaction" },
+    { value: "100%", label: "Response Rate" },
   ];
 
   return (
@@ -247,7 +262,7 @@ function HeroStats() {
       {stats.map((stat) => (
         <div key={stat.label} className="group text-center">
           <m.div
-            className="text-primary mb-2 text-3xl font-bold transition-transform duration-300 group-hover:scale-110 lg:text-4xl"
+            className="font-display text-primary mb-2 text-4xl font-bold transition-transform duration-300 group-hover:scale-110 lg:text-5xl"
             whileHover={{ scale: 1.1 }}
           >
             {stat.value}
@@ -272,7 +287,7 @@ function ScrollIndicator() {
       <m.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="text-muted-foreground/60 hover:text-muted-foreground cursor-pointer transition-colors"
+        className="text-muted-foreground/60 hover:text-primary cursor-pointer transition-colors"
         onClick={() => scrollToSection("#about")}
       >
         <ArrowDown className="h-6 w-6" />

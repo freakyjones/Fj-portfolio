@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { FramerProvider } from "@/components/ui/FramerProvider";
+import { ActionMenu } from "@/components/ui/ActionMenu";
 
 // ------------------------
 // 1️⃣ Google Fonts
@@ -97,13 +98,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <body
         suppressHydrationWarning={true}
         className={`antialiased ${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
       >
+        <div className="crt-overlay"></div>
+        <div className="crt-vignette"></div>
         <FramerProvider>
           {children}
+          <ActionMenu />
         </FramerProvider>
         <Toaster />
       </body>

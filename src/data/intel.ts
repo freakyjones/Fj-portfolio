@@ -13,8 +13,8 @@ export interface CognitiveStream {
 }
 
 export const commsData: CommsLink[] = [
-  { id: "linkedin", label: "LINKEDIN", url: "https://linkedin.com/in/abhilash-pandey" },
-  { id: "github", label: "GITHUB", url: "https://github.com/fj-codes" },
+  { id: "linkedin", label: "LINKEDIN", url: "https://www.linkedin.com/in/abhilash-pandey-0b45a1185" },
+  { id: "github", label: "GITHUB", url: "https://github.com/freakyjones" },
   { id: "email", label: "EMAIL", url: "mailto:abhilashpandey8170@gmail.com" },
 ];
 

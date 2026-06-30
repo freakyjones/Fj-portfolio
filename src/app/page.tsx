@@ -1,11 +1,9 @@
-"use client";
-
 import { WireframePane } from "@/components/ui/WireframePane";
 import { SynchronicityHub } from "@/components/SynchronicityHub";
 import { CommsRelay } from "@/components/ui/CommsRelay";
 import { SitrepFeed } from "@/components/SitrepFeed";
 import { projects } from "@/data/projects";
-import { sitrepLogs } from "@/data/logs";
+import { getOperatorHistory } from "@/app/actions/github";
 
 // Modularized Components
 import { TerminalPrompt } from "@/components/ui/TerminalPrompt";
@@ -15,7 +13,8 @@ import { VisitorNodeDetector } from "@/components/VisitorNodeDetector";
 import { ProjectManifests } from "@/components/ProjectManifests";
 import { CognitiveLoad } from "@/components/ui/CognitiveLoad";
 
-export default function Home() {
+export default async function Home() {
+  const commitLogs = await getOperatorHistory();
 
   return (
     <main className="min-h-screen p-4 md:p-8 animate-flicker overflow-x-hidden">
@@ -55,7 +54,7 @@ export default function Home() {
           {/* Column B: Telemetry & SITREP Feed */}
           <div className="lg:col-span-4 flex flex-col gap-4">
             <WireframePane label="SITREP_FEED">
-              <SitrepFeed logs={sitrepLogs} />
+              <SitrepFeed logs={commitLogs} />
             </WireframePane>
             
             <WireframePane label="VISITOR_TELEMETRY">

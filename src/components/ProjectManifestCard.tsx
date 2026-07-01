@@ -56,7 +56,17 @@ export function ProjectManifestCard({ project }: ProjectManifestCardProps) {
         </div>
         <div>
           <h3 className="text-primary/80 mb-1 uppercase tracking-wider text-xs bloom">The Performance</h3>
-          <p className="text-accent font-semibold leading-relaxed bloom-white">{project.performance}</p>
+          {Array.isArray(project.performance) ? (
+            <ul className="list-disc pl-4 space-y-1.5 text-accent font-semibold leading-relaxed bloom-white text-xs sm:text-sm">
+              {project.performance.map((bullet, i) => (
+                <li key={i} className="marker:text-primary">
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-accent font-semibold leading-relaxed bloom-white">{project.performance}</p>
+          )}
         </div>
         <div>
           <h3 className="text-foreground/75 mb-1 uppercase tracking-wider text-xs">Infrastructure</h3>

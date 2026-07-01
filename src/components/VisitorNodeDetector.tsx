@@ -5,7 +5,12 @@ import { m, AnimatePresence } from "framer-motion";
 import { mockCities, mockOS, mockBrowsers } from "@/data/visitorNodes";
 
 export function VisitorNodeDetector() {
-  const [nodes, setNodes] = useState<string[]>([]);
+  interface TelemetryNode {
+    id: string;
+    text: string;
+    isCurrent?: boolean;
+  }
+  const [nodes, setNodes] = useState<TelemetryNode[]>([]);
 
   useEffect(() => {
     let mounted = true;
@@ -17,6 +22,14 @@ export function VisitorNodeDetector() {
         const data = await res.json();
         
         if (!mounted) return;
+
+        if (data.error) {
+          setNodes([
+            { id: "fallback-1", text: `[+] CURRENT_NODE DETECTED: 📍 Kolkata, IN — Windows 11 / Chrome`, isCurrent: true },
+            { id: "fallback-2", text: `[+] NODE DETECTED: 📍 London, UK — macOS 14 / Safari` }
+          ]);
+          return;
+        }
         
         const ua = window.navigator.userAgent;
         let osStr = "Unknown OS";
@@ -32,17 +45,17 @@ export function VisitorNodeDetector() {
         const city = data.city || "Encrypted Node";
         const country = data.country || "UNKNOWN";
         
-        const realNode = `[+] REAL_NODE DETECTED: 📍 ${city}, ${country} — ${osStr} / ${browserStr}`;
+        const realNode = `[+] CURRENT_NODE DETECTED: 📍 ${city}, ${country} — ${osStr} / ${browserStr}`;
         
         setNodes([
-          realNode,
-          `[+] NODE DETECTED: 📍 London, UK — macOS 14 / Safari`
+          { id: "real-node-1", text: realNode, isCurrent: true },
+          { id: "real-node-2", text: `[+] NODE DETECTED: 📍 London, UK — macOS 14 / Safari` }
         ]);
       } catch (err) {
         if (mounted) {
           setNodes([
-            `[+] NODE DETECTED: 📍 Kolkata, IN — Windows 11 / Chrome`,
-            `[+] NODE DETECTED: 📍 London, UK — macOS 14 / Safari`
+            { id: "fallback-1", text: `[+] CURRENT_NODE DETECTED: 📍 Kolkata, IN — Windows 11 / Chrome`, isCurrent: true },
+            { id: "fallback-2", text: `[+] NODE DETECTED: 📍 London, UK — macOS 14 / Safari` }
           ]);
         }
       }
@@ -56,11 +69,17 @@ export function VisitorNodeDetector() {
       const os = mockOS[Math.floor(Math.random() * mockOS.length)];
       const browser = mockBrowsers[Math.floor(Math.random() * mockBrowsers.length)];
       
-      const newNode = `[+] NODE DETECTED: 📍 ${city} — ${os} / ${browser}`;
+      const newNodeText = `[+] NODE DETECTED: 📍 ${city} — ${os} / ${browser}`;
       
       setNodes((prev) => {
-        const newArr = [newNode, ...prev];
-        return newArr.slice(0, 4); // Keep only the latest 4
+        const currentNode = prev.find((n) => n.isCurrent);
+        const mockNodes = prev.filter((n) => !n.isCurrent);
+        const newMockNode = { id: Math.random().toString(), text: newNodeText };
+        
+        // Keep the latest 3 mock nodes since 1 slot is occupied by the pinned current node
+        const updatedMockNodes = [newMockNode, ...mockNodes].slice(0, 3);
+        
+        return currentNode ? [currentNode, ...updatedMockNodes] : [newMockNode, ...mockNodes].slice(0, 4);
       });
     }, 5000 + Math.random() * 8000); // Random interval between 5-13 seconds
 
@@ -73,17 +92,17 @@ export function VisitorNodeDetector() {
   return (
     <div className="flex flex-col space-y-1.5 font-mono text-xs mt-2 overflow-hidden min-h-[90px]">
       <AnimatePresence mode="popLayout">
-        {nodes.map((node, i) => (
+        {nodes.map((node) => (
           <m.div 
-            key={`${node}-${i}`}
+            key={node.id}
             initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: i === 0 ? 1 : 0.5, x: 0 }}
+            animate={{ opacity: node.isCurrent ? 1 : 0.5, x: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
             layout
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className={i === 0 ? "text-primary bloom" : "text-muted-foreground"}
+            className={node.isCurrent ? "text-primary bloom" : "text-muted-foreground"}
           >
-            {node}
+            {node.text}
           </m.div>
         ))}
       </AnimatePresence>

@@ -60,6 +60,9 @@ export function TerminalPrompt() {
     if (e.key === "Enter") {
       e.preventDefault();
       executeCommand(input);
+    } else if (input === "" && (e.key === "1" || e.key === "2" || e.key === "3")) {
+      e.preventDefault();
+      executeCommand(e.key);
     }
   };
 

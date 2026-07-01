@@ -77,7 +77,8 @@ export const metadata: Metadata = {
     creator: "https://x.com/Abhilas50666790", // Replace with your Twitter handle
   },
   icons: {
-    icon: "/profile_image.png",
+    icon: "/profile_image.svg",
+    apple: "/profile_image.png",
   },
 };
 
@@ -93,8 +94,10 @@ export const viewport: Viewport = {
 // ------------------------
 export default function RootLayout({
   children,
+  modal,
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
@@ -106,6 +109,7 @@ export default function RootLayout({
         <div className="crt-vignette"></div>
         <FramerProvider>
           {children}
+          {modal}
         </FramerProvider>
         <Toaster />
       </body>

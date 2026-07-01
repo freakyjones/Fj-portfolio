@@ -22,19 +22,19 @@ export const cognitiveStreams: CognitiveStream[] = [
   {
     id: "stream-1",
     type: "READING",
-    title: "Designing Data-Intensive Applications",
-    progress: 64,
+    title: "Linear Algebra: Matrix Transformations & Eigenvectors",
+    progress: 20,
   },
   {
     id: "stream-2",
-    type: "LEARNING",
-    title: "Optimizing React 19 concurrent features on Edge runtimes",
-    statusText: "ACTIVE",
+    type: "READING",
+    title: "System Design: Distributed Data-Intensive Applications",
+    progress: 30,
   },
   {
     id: "stream-3",
     type: "LEARNING",
-    title: "WebGL / Three.js Shaders",
+    title: "Optimizing React 19 concurrent features on Edge runtimes",
     statusText: "ACTIVE",
   }
 ];

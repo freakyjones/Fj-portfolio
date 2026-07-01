@@ -7,34 +7,34 @@
 /* ---------- Theme Tokens ---------- */
 @theme inline {
   /* Obsidian Slate background for accessibility (Astigmatism friendly) */
-  --color-background: #09090b;
-  --color-foreground: #f4f4f5;
+  --color-background: #050507;
+  --color-foreground: #34d399; /* Terminal green */
   
-  --color-card: #09090b;
-  --color-card-foreground: #f4f4f5;
+  --color-card: #050507;
+  --color-card-foreground: #34d399;
   
-  --color-popover: #09090b;
-  --color-popover-foreground: #f4f4f5;
+  --color-popover: #050507;
+  --color-popover-foreground: #34d399;
 
-  /* Emerald Green / Phosphor Green */
-  --color-primary: #10b981; 
-  --color-primary-foreground: #09090b;
+  /* Neon Cyan for headers & actions */
+  --color-primary: #00ffcc; 
+  --color-primary-foreground: #050507;
   
-  --color-secondary: #27272a;
-  --color-secondary-foreground: #f4f4f5;
+  --color-secondary: #18181b;
+  --color-secondary-foreground: #34d399;
 
-  --color-accent: #3f3f46;
-  --color-accent-foreground: #f4f4f5;
+  --color-accent: #ffffff; /* Stark White */
+  --color-accent-foreground: #050507;
 
   --color-muted: #18181b;
-  --color-muted-foreground: #d4d4d8;
+  --color-muted-foreground: #8a9aae; /* Dimmed gray/green (passes WCAG AA contrast) */
 
   --color-destructive: #ef4444;
   --color-destructive-foreground: #fafafa;
   
-  --color-border: #3f3f46;
-  --color-input: #27272a;
-  --color-ring: #10b981;
+  --color-border: #1a202c; /* Crisp border */
+  --color-input: #18181b;
+  --color-ring: #00ffcc;
 
   /* Monospace typography globally */
   --font-sans: 'JetBrains Mono', monospace;
@@ -54,25 +54,25 @@
 
 /* Dark mode mapping is identical as this is a forced dark theme */
 .dark {
-  --color-background: #09090b;
-  --color-foreground: #f4f4f5;
-  --color-card: #09090b;
-  --color-card-foreground: #f4f4f5;
-  --color-popover: #09090b;
-  --color-popover-foreground: #f4f4f5;
-  --color-primary: #10b981;
-  --color-primary-foreground: #09090b;
-  --color-secondary: #27272a;
-  --color-secondary-foreground: #f4f4f5;
+  --color-background: #050507;
+  --color-foreground: #34d399;
+  --color-card: #050507;
+  --color-card-foreground: #34d399;
+  --color-popover: #050507;
+  --color-popover-foreground: #34d399;
+  --color-primary: #00ffcc;
+  --color-primary-foreground: #050507;
+  --color-secondary: #18181b;
+  --color-secondary-foreground: #34d399;
   --color-muted: #18181b;
-  --color-muted-foreground: #d4d4d8;
-  --color-accent: #3f3f46;
-  --color-accent-foreground: #f4f4f5;
+  --color-muted-foreground: #8a9aae;
+  --color-accent: #ffffff;
+  --color-accent-foreground: #050507;
   --color-destructive: #ef4444;
   --color-destructive-foreground: #fafafa;
-  --color-border: #3f3f46;
-  --color-input: #27272a;
-  --color-ring: #10b981;
+  --color-border: #1a202c;
+  --color-input: #18181b;
+  --color-ring: #00ffcc;
 }
 
 /* ---------- Base Styles & Hardware Emulation ---------- */
@@ -107,11 +107,11 @@
 
 /* Phosphor Bloom text effect */
 .bloom {
-  text-shadow: 0 0 2px var(--color-primary), 0 0 8px color-mix(in srgb, var(--color-primary) 40%, transparent);
+  text-shadow: 0 0 1px var(--color-primary), 0 0 4px color-mix(in srgb, var(--color-primary) 30%, transparent);
 }
 
 .bloom-white {
-  text-shadow: 0 0 2px var(--color-foreground), 0 0 8px color-mix(in srgb, var(--color-foreground) 40%, transparent);
+  text-shadow: 0 0 1px #ffffff, 0 0 4px rgba(255, 255, 255, 0.25);
 }
 
 /* Chromatic Aberration for headers */

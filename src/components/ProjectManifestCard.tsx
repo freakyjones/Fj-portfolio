@@ -19,7 +19,7 @@ export function ProjectManifestCard({ project }: ProjectManifestCardProps) {
       transition={{ duration: 0.3 }}
       className="border-l border-primary/20 pl-4 py-2"
     >
-      <h2 className="text-lg text-primary bloom aberration mb-2 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+      <h2 className="text-lg text-accent bloom-white aberration mb-2 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
         <div className="flex-1 w-full truncate">
           <KineticDecryptionText text={`> ${project.title}`} />
         </div>
@@ -41,22 +41,26 @@ export function ProjectManifestCard({ project }: ProjectManifestCardProps) {
       
       <div className="flex flex-col gap-4 text-sm font-mono mt-4 bg-muted/5 p-4 border border-dashed border-border/50">
         <div>
-          <h3 className="text-foreground/70 mb-1 uppercase tracking-wider text-xs">The Tech</h3>
+          <h3 className="text-foreground/75 mb-1 uppercase tracking-wider text-xs">Ingestion Spec</h3>
           <div className="flex flex-wrap gap-2 mt-1">
-            {project.tech.map((tech, i) => (
-              <span key={i} className="text-[10px] bg-primary/10 text-primary px-2 py-0.5 border border-primary/20">
+            {project.ingestionSpec.map((tech, i) => (
+              <span key={i} className="text-[10px] bg-primary/10 text-primary px-3 py-1 border border-primary/30 font-bold">
                 {tech}
               </span>
             ))}
           </div>
         </div>
         <div>
-          <h3 className="text-foreground/70 mb-1 uppercase tracking-wider text-xs">The Function</h3>
-          <p className="text-foreground opacity-90 leading-relaxed">{project.function}</p>
+          <h3 className="text-foreground/75 mb-1 uppercase tracking-wider text-xs">The Intent</h3>
+          <p className="text-foreground leading-relaxed">{project.intent}</p>
         </div>
         <div>
-          <h3 className="text-primary/70 mb-1 uppercase tracking-wider text-xs bloom">The Impact</h3>
-          <p className="text-foreground opacity-100 font-semibold leading-relaxed">{project.impact}</p>
+          <h3 className="text-primary/80 mb-1 uppercase tracking-wider text-xs bloom">The Performance</h3>
+          <p className="text-accent font-semibold leading-relaxed bloom-white">{project.performance}</p>
+        </div>
+        <div>
+          <h3 className="text-foreground/75 mb-1 uppercase tracking-wider text-xs">Infrastructure</h3>
+          <p className="text-primary leading-relaxed font-semibold bloom">{project.infrastructure}</p>
         </div>
       </div>
     </m.li>

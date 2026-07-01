@@ -13,6 +13,11 @@ export function TerminalPrompt() {
     inputRef.current?.focus();
   };
 
+  const handleLinkClick = (e: React.MouseEvent, cmd: string, response: string) => {
+    e.stopPropagation();
+    setHistory((prev) => [...prev, `> ${cmd}`, response]);
+  };
+
   const executeCommand = (cmdStr: string) => {
     const cmd = cmdStr.trim().toLowerCase();
     if (!cmd) return;
@@ -33,12 +38,18 @@ export function TerminalPrompt() {
     } else if (cmd === "3" || cmd === "github" || cmd === "view github") {
       response = "Routing to GitHub mainframe... [DONE]";
       window.open("https://github.com/freakyjones", "_blank");
+    } else if (cmd === "help") {
+      response = "Available commands:\n1/resume: Download Resume\n2/email: Send Email\n3/github: View GitHub\nmatrix: System Telemetry specs\nskills: Operator capabilities\nclear: Reset terminal log";
+    } else if (cmd === "matrix") {
+      response = "SYSTEM TELEMETRY SPECS:\n- CORE: Next.js 15.5.9 (App Router)\n- ENGINE: React 19.1.0\n- DESIGN: Tailwind CSS v4\n- MOTION: Framer Motion\n- COMPILER: Turbopack";
+    } else if (cmd === "skills") {
+      response = "OPERATOR CAPABILITIES:\n- FRONTEND: React 19, Next.js 15, TypeScript, Tailwind CSS, Framer Motion\n- STATE/DATA: Zustand, Zod\n- VIZ: Recharts, React-Leaflet\n- BACKEND/AUTOMATION: Supabase, Playwright, Gemini AI API";
     } else if (cmd === "clear") {
       setHistory([]);
       setInput("");
       return;
     } else {
-      response = `Command not recognized: ${cmd}. Available commands: 1 (Resume), 2 (Email), 3 (GitHub)`;
+      response = `Command not recognized: "${cmd}". Type "help" to view available commands.`;
     }
 
     setHistory((prev) => [...prev, `> ${cmdStr}`, response]);
@@ -61,25 +72,40 @@ export function TerminalPrompt() {
       <div className="mb-4 text-xs text-muted-foreground">
         -- HANDSHAKE_PROTOCOL_INITIALIZED --<br/>
         Available commands:<br/>
-        <button onClick={(e) => { e.stopPropagation(); executeCommand("1"); }} className="hover:text-primary transition-colors text-left w-full sm:w-auto">
+        <a 
+          href="/Abhilash_Pandey_Resume_revise.pdf" 
+          download="Abhilash_Pandey_Resume.pdf"
+          onClick={(e) => handleLinkClick(e, "1", "Downloading RESUME.pdf... [DONE]")} 
+          className="hover:text-primary transition-colors text-left block w-fit focus-visible:ring-1 focus-visible:ring-primary outline-none"
+        >
           [1] Download Resume
-        </button><br/>
-        <button onClick={(e) => { e.stopPropagation(); executeCommand("2"); }} className="hover:text-primary transition-colors text-left w-full sm:w-auto">
+        </a>
+        <a 
+          href="mailto:abhilashpandey8170@gmail.com" 
+          onClick={(e) => handleLinkClick(e, "2", "Opening secure mail protocol... [DONE]")} 
+          className="hover:text-primary transition-colors text-left block w-fit focus-visible:ring-1 focus-visible:ring-primary outline-none"
+        >
           [2] Send Email
-        </button><br/>
-        <button onClick={(e) => { e.stopPropagation(); executeCommand("3"); }} className="hover:text-primary transition-colors text-left w-full sm:w-auto">
+        </a>
+        <a 
+          href="https://github.com/freakyjones" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          onClick={(e) => handleLinkClick(e, "3", "Routing to GitHub mainframe... [DONE]")} 
+          className="hover:text-primary transition-colors text-left block w-fit focus-visible:ring-1 focus-visible:ring-primary outline-none"
+        >
           [3] View GitHub
-        </button><br/>
+        </a>
       </div>
       
-      <div className="flex flex-col gap-2 mb-2">
+      <div className="flex flex-col gap-2 mb-2 max-h-[120px] overflow-y-auto scrollbar-none">
         {history.map((line, i) => (
           <m.div 
             key={i} 
             layout 
             initial={{ opacity: 0, x: -10 }} 
             animate={{ opacity: 1, x: 0 }}
-            className={line.startsWith(">") ? "text-primary" : "text-foreground opacity-90"}
+            className={line.startsWith(">") ? "text-primary" : "text-foreground opacity-90 whitespace-pre-wrap"}
           >
             {line}
           </m.div>

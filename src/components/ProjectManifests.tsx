@@ -15,29 +15,30 @@ export function ProjectManifests({ projects }: ProjectManifestsProps) {
 
   const filteredProjects = projects.filter(project => {
     if (activeFilter === '--all') return true;
-    if (activeFilter === '--frontend') return project.tech.some(tech => tech.includes('REACT') || tech.includes('NEXT') || tech.includes('FRONTEND'));
-    if (activeFilter === '--fullstack') return project.tech.some(tech => tech.includes('NODE') || tech.includes('BACKEND') || tech.includes('POSTGRESQL'));
+    if (activeFilter === '--frontend') {
+      return project.slug === 'ai-weather-application';
+    }
+    if (activeFilter === '--fullstack') {
+      return project.slug === 'critical-minerals-dashboard' || project.slug === 'job-hunt-agent';
+    }
     return true;
-  }).slice(0, 3); // Keep it to max 3 for the dashboard
+  }).slice(0, 4); // Keep it to max 4 for the dashboard
 
   return (
     <>
-      <div className="flex gap-4 border-b border-dashed border-border pb-2 text-xs font-mono mb-2 overflow-x-auto scrollbar-none">
-        <span className="text-muted-foreground">FILTER:</span>
+      <div className="flex gap-2 border-b border-dashed border-border pb-4 text-xs font-mono mb-4 overflow-x-auto scrollbar-none items-center">
+        <span className="text-muted-foreground mr-2">FILTER:</span>
         {filters.map(filter => (
           <button 
             key={filter}
             onClick={() => setActiveFilter(filter)}
-            className={`relative px-2 transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none whitespace-nowrap ${activeFilter === filter ? 'text-primary bloom' : 'text-muted-foreground hover:text-foreground'}`}
+            className={`px-3 py-1 font-mono transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none whitespace-nowrap text-xs border ${
+              activeFilter === filter 
+                ? 'border-primary text-primary bloom bg-primary/10' 
+                : 'border-border/30 text-muted-foreground hover:text-foreground hover:border-border/60'
+            }`}
           >
-            {activeFilter === filter && (
-              <m.div 
-                layoutId="active-filter-bg"
-                className="absolute inset-0 bg-primary/10 border-b border-primary z-0"
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
-            <span className="relative z-10">{filter}</span>
+            {filter.toUpperCase()}
           </button>
         ))}
       </div>

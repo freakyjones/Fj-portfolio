@@ -3,7 +3,7 @@ export interface Project {
   slug: string;
   title: string;
   intent: string;      
-  performance: string; 
+  performance: string | string[]; 
   ingestionSpec: string[]; 
   infrastructure: string;
   liveUrl?: string;
@@ -16,7 +16,11 @@ export const projects: Project[] = [
     slug: "critical-minerals-dashboard",
     title: "OP_CRI_MINERALS_DASH",
     intent: "A high-performance strategic intelligence dashboard engineered for policymakers and supply chain analysts. It provides real-time geospatial mapping, production tracking, and predictive risk scoring for the global critical minerals supply chain. The architecture was designed from the ground up with strict, verifiable guardrails to seamlessly support autonomous AI agent contribution without accumulating technical debt.",
-    performance: "Architected a highly modular, feature-isolated codebase utilizing React 19's concurrent rendering and aggressive route-level lazy-loading to optimize client-side performance. Engineered robust rendering pipelines for complex geoJSON datasets and interactive charts, while implementing strict Zod runtime boundary validation to maintain a constant 60 FPS and zero rendering crashes.",
+    performance: [
+      "Architected a decoupled, zero-leak frontend architecture leveraging React 19 concurrent features and asynchronous chunk-splitting, slashing initial script evaluation time.",
+      "Engineered multi-layered telemetry pipelines using Zod runtime schemas to enforce deterministic boundary validation, ensuring zero client-side degradation during heavy geoJSON payload ingestion.",
+      "Established isolated component contexts specifically designed to remain structurally resilient against automated agentic iterations and code generation."
+    ],
     ingestionSpec: [
       "REACT_19",
       "TYPESCRIPT",
@@ -51,7 +55,11 @@ export const projects: Project[] = [
     slug: "job-hunt-agent",
     title: "OP_JOB_HUNT_AGENT",
     intent: "An end-to-end autonomous pipeline that discovers high-leverage job opportunities, dynamically tailors resumes using generative AI, and programmatically submits applications to maximize interview yield.",
-    performance: "Architected a highly resilient, zero-cost automation engine that navigates complex web topologies and mitigates strict API quotas via intelligent model fallbacks, enabling the autonomous processing of targeted applications daily.",
+    performance: [
+      "Deployed a headless automation pipeline utilizing Playwright to programmatically traverse complex web state machines, dynamically bypassing strict DOM mutations.",
+      "Orchestrated an intelligent LLM router tier featuring token-cost optimization hooks and programmatic model fallbacks (Gemini to alternative endpoints) to guarantee 100% operation uptime without quota breaches.",
+      "Configured persistent system synchronization via Supabase Postgres triggers to maintain transactional consistency across multi-stage application workflows."
+    ],
     ingestionSpec: [
       "NEXT_JS",
       "TYPESCRIPT",

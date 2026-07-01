@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Font Import -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&amp;family=Share+Tech+Mono&amp;display=swap');
+      
+      .monogram-a {
+        font-family: 'Cinzel Decorative', 'Georgia', serif;
+        font-weight: 700;
+        fill: #f3f4f6;
+        filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.4));
+      }
+      
+      .monogram-p {
+        font-family: 'Cinzel Decorative', 'Georgia', serif;
+        font-weight: 700;
+        fill: #f3f4f6;
+        filter: drop-shadow(-4px 4px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 12px rgba(16, 185, 129, 0.3));
+      }
+
+      .terminal-text {
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 10px;
+        fill: #10b981;
+        letter-spacing: 2px;
+        opacity: 0.7;
+      }
+    </style>
+
+    <!-- Background Gradient -->
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#022c22" stop-opacity="1" />
+      <stop offset="100%" stop-color="#030712" stop-opacity="1" />
+    </radialGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#10b981" stroke-width="0.5" opacity="0.15" />
+    </pattern>
+  </defs>
+
+  <!-- Base Background -->
+  <rect width="512" height="512" fill="#030712" />
+
+  <!-- Outer circular frame with glow -->
+  <circle cx="256" cy="256" r="236" fill="url(#bg-glow)" stroke="#10b981" stroke-width="6" />
+  <circle cx="256" cy="256" r="226" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4" />
+  <circle cx="256" cy="256" r="242" fill="none" stroke="#10b981" stroke-width="1" opacity="0.2" />
+
+  <!-- Grid overlay inside circle -->
+  <circle cx="256" cy="256" r="226" fill="url(#grid)" />
+
+  <!-- Technical concentric rings / radar lines -->
+  <circle cx="256" cy="256" r="170" fill="none" stroke="#10b981" stroke-width="1" opacity="0.1" />
+  <circle cx="256" cy="256" r="110" fill="none" stroke="#10b981" stroke-width="1" opacity="0.08" />
+  
+  <!-- Outer Ring Technical Ticks -->
+  <path d="M 256 12 L 256 22 M 256 490 L 256 500 M 12 256 L 22 256 M 490 256 L 500 256" stroke="#10b981" stroke-width="2" opacity="0.5" />
+  
+  <!-- Monogram Initials (AP) -->
+  <g id="monogram-group" transform="translate(0, 10)">
+    <!-- Stylized A -->
+    <text x="95" y="315" class="monogram-a" font-size="230">A</text>
+    <!-- Stylized P (overlapping A) -->
+    <text x="215" y="315" class="monogram-p" font-size="230">P</text>
+  </g>
+
+  <!-- Tactical/Terminal Details -->
+  <text x="256" y="90" text-anchor="middle" class="terminal-text">SYS.OP // AP-NODE</text>
+  <text x="256" y="440" text-anchor="middle" class="terminal-text">EST. 2026</text>
+
+  <!-- Globe Badge at Bottom Right -->
+  <g id="globe-badge" transform="translate(375, 375)">
+    <circle cx="0" cy="0" r="45" fill="#030712" stroke="#10b981" stroke-width="3" />
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#10b981" stroke-width="1" stroke-dasharray="3,3" opacity="0.5" />
+    <!-- Latitudes -->
+    <path d="M -28 -14 L 28 -14 M -38 0 L 38 0 M -28 14 L 28 14" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.7" />
+    <!-- Longitudes -->
+    <path d="M 0 -38 A 16 38 0 0 0 0 38 M 0 -38 A 30 38 0 0 0 0 38 M 0 -38 A 16 38 0 0 1 0 38 M 0 -38 A 30 38 0 0 1 0 38" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.7" />
+    <!-- Prime Meridian -->
+    <path d="M 0 -38 L 0 38" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.7" />
+  </g>
+</svg>

@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { FramerProvider } from "@/components/ui/FramerProvider";
-import { ActionMenu } from "@/components/ui/ActionMenu";
 
 // ------------------------
 // 1️⃣ Google Fonts
@@ -107,7 +106,6 @@ export default function RootLayout({
         <div className="crt-vignette"></div>
         <FramerProvider>
           {children}
-          <ActionMenu />
         </FramerProvider>
         <Toaster />
       </body>

@@ -22,18 +22,18 @@ export default async function Home() {
         
         {/* ROW 1: Tactical Header */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          <WireframePane className="md:col-span-5 flex justify-between items-end" label="TACTICAL_HEADER">
+          <WireframePane className="md:col-span-5 flex justify-between items-start" label="TACTICAL_HEADER">
             <div>
               <h1 className="text-xl text-primary bloom">IDENTITY: ABHILASH</h1>
               <div className="text-xs text-muted-foreground mt-1">
-                STATUS: <span className="text-foreground">ACTIVE</span> {"//"} RANK: SYSTEMS_ENGINEER
+                STATUS: <span className="text-foreground">ACTIVE</span> {"//"} RANK: FULLSTACK_ENGINEER
               </div>
               <div className="text-xs text-muted-foreground mt-4 max-w-lg leading-relaxed">
                 <span className="text-primary">{"//"} OBJECTIVE:</span> Frontend Engineer with 2.5+ years of professional experience building scalable web applications. Proficient in Next.js 15, React 19, and TypeScript. Skilled in AI-assisted development—leveraging agentic AI systems to prototype, architect, and ship production-grade code.
               </div>
             </div>
           </WireframePane>
-          <WireframePane className="md:col-span-7 flex justify-end items-end" label="SYNCHRONICITY_HUB">
+          <WireframePane className="md:col-span-7 flex items-center" label="SYNCHRONICITY_HUB">
             <SynchronicityHub />
           </WireframePane>
         </div>

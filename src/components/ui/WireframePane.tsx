@@ -24,7 +24,7 @@ const WireframePane = React.forwardRef<HTMLDivElement, WireframePaneProps>(
             {label}
           </div>
         )}
-        <div className={cn(noPadding ? "" : "p-4")}>{children}</div>
+        <div className={cn(noPadding ? "" : "p-6")}>{children}</div>
       </div>
     )
   }

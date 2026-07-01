@@ -31,7 +31,7 @@ export default function AllProjectsPage() {
             transition={{ duration: 0.6 }}
             className="mb-8 border-b border-dashed border-border pb-4"
           >
-            <h1 className="text-3xl text-primary bloom aberration mb-2">
+            <h1 className="text-3xl text-accent bloom-white aberration mb-2">
               <KineticDecryptionText text="ALL_DEPLOYED_ENGINES" />
             </h1>
             <div className="text-xs text-muted-foreground font-mono">
@@ -49,19 +49,19 @@ export default function AllProjectsPage() {
                 className="border-l border-primary/20 pl-4 py-2 hover:bg-primary/5 transition-colors group"
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-primary text-lg font-bold group-hover:bloom transition-all">
+                  <h3 className="text-accent text-lg font-bold group-hover:bloom-white transition-all">
                     <Link href={`/projects/${project.slug}`} className="focus-visible:ring-2 focus-visible:ring-primary">
                       &gt; {project.title}
                     </Link>
                   </h3>
-                  <span className="text-xs text-muted-foreground tabular-nums">ID:{project.id}</span>
+                  <span className="text-xs text-muted-foreground tabular-nums">ID:{project.id} {"//"} INFRA:{project.infrastructure}</span>
                 </div>
                 
-                <p className="text-foreground opacity-90 mb-3 text-xs md:text-sm">{project.function}</p>
+                <p className="text-foreground mb-3 text-xs md:text-sm">{project.intent}</p>
                 
                 <div className="flex flex-wrap gap-2 mt-2">
-                  {project.tech.map((tech, i) => (
-                    <span key={i} className="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 border border-primary/20">
+                  {project.ingestionSpec.map((tech, i) => (
+                    <span key={i} className="text-[10px] bg-primary/10 text-primary px-3 py-1 border border-primary/30 font-bold">
                       {tech}
                     </span>
                   ))}

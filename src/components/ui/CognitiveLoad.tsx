@@ -1,14 +1,13 @@
 "use client";
 
 import React from "react";
-import { m, LazyMotion, domAnimation } from "framer-motion";
+import { m } from "framer-motion";
 import { cognitiveStreams } from "@/data/intel";
 import { KineticDecryptionText } from "./KineticDecryptionText";
 
 export function CognitiveLoad() {
   return (
-    <LazyMotion features={domAnimation}>
-      <div className="flex flex-col font-mono text-xs w-full">
+    <div className="flex flex-col font-mono text-xs w-full">
         <h3 className="text-primary/70 mb-3 uppercase tracking-widest border-b border-dashed border-border pb-2 bloom">
           [ COGNITIVE_LOAD ]
         </h3>
@@ -22,15 +21,17 @@ export function CognitiveLoad() {
               transition={{ delay: index * 0.15 }}
               className="flex flex-col gap-1"
             >
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <span className="text-primary">&gt;</span>
-                <span className="uppercase opacity-80">
-                  {stream.type === "READING" ? "INGESTING_LOG" : "ACTIVE_STREAM"}
-                </span>
-                <span className="opacity-50">::</span>
-                <span className="truncate text-foreground/90 w-full overflow-hidden text-ellipsis whitespace-nowrap" title={stream.title}>
-                  <KineticDecryptionText text={stream.title} />
-                </span>
+              <div className="flex items-start gap-2 text-muted-foreground min-w-0 w-full">
+                <span className="text-primary mt-0.5 select-none font-bold">&gt;</span>
+                <div className="flex flex-col min-w-0 w-full">
+                  <div className="flex items-center gap-1 text-[9px] uppercase tracking-wider opacity-60">
+                    {stream.type === "READING" ? "INGESTING_LOG" : "ACTIVE_STREAM"}
+                    <span className="opacity-50">::</span>
+                  </div>
+                  <span className="text-foreground/95 break-words leading-relaxed text-xs">
+                    <KineticDecryptionText text={stream.title} />
+                  </span>
+                </div>
               </div>
               
               <div className="flex items-center gap-2 ml-4">
@@ -54,6 +55,5 @@ export function CognitiveLoad() {
           ))}
         </div>
       </div>
-    </LazyMotion>
   );
 }

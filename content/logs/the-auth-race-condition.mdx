@@ -1,0 +1,45 @@
+---
+title: "SYSTEM_LOG: The Auth Race Condition"
+date: "2026-07-02"
+readTime: "3m"
+tags: ["Next.js", "Auth", "Engineering-Journal"]
+---
+
+## SITREP: Auth Session Instability
+**STATUS:** RESOLVED
+**SEVERITY:** HIGH
+**COMPONENT:** `apps/dashboard/src/app/api/auth/`
+
+### THE ANOMALY
+We identified a recurring failure where `Sign Out` actions would sporadically fail to terminate the session. The user would trigger the action, the UI would transition, but the browser would retain the active `sb-auth-token` cookies.
+
+### DIAGNOSTIC: THE RACE CONDITION
+The failure stemmed from a classic browser-level race condition between the **Navigation Engine** and the **Network Layer**:
+
+1. **The Conflict:** When utilizing Server Actions, the browser receives a `Set-Cookie` (to delete the token) and an `x-action-redirect` (to navigate to `/login`) simultaneously.
+2. **The Result:** The browser is hyper-optimized for navigation speed. It frequently initiates the redirection load *before* the local cookie storage engine commits the deletion of the `sb-` chunks.
+3. **The Consequence:** The new page loads with the legacy session still "active" in the browser storage, leading to an inconsistent state where the UI suggests the user is logged out, but the Supabase client believes otherwise.
+
+### RESOLUTION: ROUTE HANDLER MIGRATION
+We transitioned from Server Actions to dedicated **Route Handlers** (`/api/auth/logout`). 
+
+Unlike Server Actions, Route Handlers provide granular, deterministic control over the `NextResponse` lifecycle. By explicitly iterating through `cookies().getAll()`, we force a clean wipe of all `sb-` prefixed cookies (including chunked JWTs) before the `302 Redirect` is triggered.
+
+```typescript
+// Deterministic Cookie Destruction
+export async function POST() {
+  const cookieStore = await cookies();
+  const allCookies = cookieStore.getAll();
+  
+  // Wipe all Supabase auth chunks
+  allCookies.forEach((c) => {
+    if (c.name.startsWith('sb-')) {
+      cookieStore.delete(c.name);
+    }
+  });
+
+  return NextResponse.redirect(new URL('/login', process.env.NEXT_PUBLIC_BASE_URL));
+}
+```
+
+*END OF TRANSMISSION*

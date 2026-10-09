@@ -68,7 +68,18 @@ export default function ProjectDetailClientPage({
             <div className="space-y-6">
               <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
                 <h3 className="text-primary mb-2 underline decoration-dashed underline-offset-4 uppercase tracking-widest bloom">THE PERFORMANCE</h3>
-                <p className="text-accent font-semibold leading-relaxed bloom-white">{project.performance}</p>
+                {Array.isArray(project.performance) ? (
+                  <ul className="space-y-2 text-accent font-semibold leading-normal tracking-tight bloom-white text-xs sm:text-sm mt-2">
+                    {project.performance.map((bullet, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-primary font-mono select-none shrink-0">&gt;_</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-accent font-semibold leading-relaxed bloom-white">{project.performance}</p>
+                )}
               </m.div>
 
               <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>

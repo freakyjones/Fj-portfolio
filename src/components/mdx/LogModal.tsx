@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { m } from "framer-motion";
 
 export function LogModal({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     router.back();
-  };
+  }, [router]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -20,12 +20,13 @@ export function LogModal({ children }: { children: React.ReactNode }) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [handleClose]);
 
   return (
     <>
       {/* Backdrop */}
       <m.div
+        role="presentation"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -35,6 +36,9 @@ export function LogModal({ children }: { children: React.ReactNode }) {
 
       {/* Terminal Window Overlay */}
       <m.div
+        role="dialog"
+        aria-modal="true"
+        aria-label="System Log Pager"
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
         exit={{ x: "100%" }}
@@ -46,8 +50,10 @@ export function LogModal({ children }: { children: React.ReactNode }) {
           <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-background/90 px-4 py-2 backdrop-blur-sm font-mono text-xs text-muted-foreground">
             <span>[ SYSTEM_LOG_PAGER ]</span>
             <button
+              type="button"
               onClick={handleClose}
-              className="hover:text-emerald-500 transition-colors"
+              aria-label="Close system log modal"
+              className="hover:text-emerald-500 transition-colors focus-visible:ring-1 focus-visible:ring-primary outline-none"
             >
               [X]
             </button>

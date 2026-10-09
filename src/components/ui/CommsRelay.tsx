@@ -4,6 +4,18 @@ import React from "react";
 import { m } from "framer-motion";
 import { commsData } from "@/data/intel";
 
+function getDisplayPath(url: string, id: string): string {
+  if (id === "email" || url.startsWith("mailto:")) {
+    return "op_contact";
+  }
+  try {
+    const parsed = new URL(url);
+    return parsed.pathname && parsed.pathname !== "/" ? parsed.pathname : parsed.hostname;
+  } catch {
+    return "relay_node";
+  }
+}
+
 export function CommsRelay() {
   return (
     <div className="flex flex-col font-mono text-xs w-full">
@@ -40,7 +52,7 @@ export function CommsRelay() {
               </a>
               <span className="opacity-50 group-hover:opacity-100"> ] ──&gt; </span>
               <span className="text-foreground/70 group-hover:text-primary transition-colors truncate">
-                {link.id === 'email' ? "op_contact" : new URL(link.url).pathname}
+                {getDisplayPath(link.url, link.id)}
               </span>
             </div>
           );

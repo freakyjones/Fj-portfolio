@@ -33,6 +33,7 @@ export function TelemetryGrid() {
           return;
         }
 
+        setError(false);
         setTotalCommits(data.totalCommits);
         
         // Flatten weeks into a single array of contribution counts
@@ -79,7 +80,7 @@ export function TelemetryGrid() {
 
   return (
     <div className="w-full flex flex-col md:flex-row gap-6 p-4 border border-dashed border-border bg-muted/5">
-      <div className="flex-1 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+      <div className="flex-1 min-w-0 max-w-full overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
         <h3 className="text-xs text-muted-foreground uppercase tracking-widest mb-4 flex items-center justify-between">
           <span>GITHUB_TELEMETRY // YTD_ACTIVITY</span>
           {error && <span className="text-destructive animate-pulse">[API_OFFLINE - USING_MOCK_DATA]</span>}
@@ -115,10 +116,16 @@ export function TelemetryGrid() {
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7 }}
-            className="text-sm font-bold text-primary bloom hover:underline cursor-pointer"
-            onClick={() => window.open('https://github.com/freakyjones', '_blank')}
           >
-            &gt; freakyjones
+            <a
+              href="https://github.com/freakyjones"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View freakyjones GitHub profile"
+              className="text-sm font-bold text-primary bloom hover:underline focus-visible:ring-1 focus-visible:ring-primary inline-block outline-none"
+            >
+              &gt; freakyjones
+            </a>
           </m.div>
         </div>
       </div>

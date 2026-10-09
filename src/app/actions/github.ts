@@ -23,9 +23,10 @@ export async function getOperatorHistory(): Promise<GitHubCommit[]> {
   const username = "freakyjones";
   
   try {
-    const headers = {
+    const headers: Record<string, string> = {
       ...(process.env.GITHUB_ACCESS_TOKEN && { Authorization: `token ${process.env.GITHUB_ACCESS_TOKEN}` }),
       Accept: "application/vnd.github.v3+json",
+      "User-Agent": "portfolio-telemetry-feed",
     };
 
     // 1. Fetch the user's most recently pushed repositories

@@ -385,8 +385,8 @@ export const AssetExporter = () => {
                   <p className="text-muted-foreground mb-3 text-xs">
                     {asset.usage}
                   </p>
-                  <div className="bg-muted overflow-x-auto rounded-lg p-3 font-mono text-xs">
-                    <pre>
+                  <div className="bg-muted overflow-x-auto rounded-lg p-3 font-mono text-xs max-w-full">
+                    <pre className="overflow-x-auto whitespace-pre-wrap break-all text-[11px] leading-relaxed">
                       <code>{asset.code}</code>
                     </pre>
                   </div>

@@ -1,26 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { FramerProvider } from "@/components/ui/FramerProvider";
 
 // ------------------------
-// 1️⃣ Google Fonts
+// 1️⃣ Font Configuration (Optimized)
 // ------------------------
-const geistSans = Geist({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-space-grotesk",
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+  fallback: ["monospace"],
 });
 
 const siteConfig = {
@@ -103,7 +94,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className="dark">
       <body
         suppressHydrationWarning={true}
-        className={`antialiased ${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
+        className={`antialiased ${jetbrainsMono.variable}`}
       >
         <div className="crt-overlay"></div>
         <div className="crt-vignette"></div>
